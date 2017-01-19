@@ -101,9 +101,7 @@ namespace fivenk_rp
         public void Teleport(Client sender, Client target)
         {
             var pos = API.getEntityPosition(sender.handle);
-
             API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
-
             API.setEntityPosition(sender.handle, API.getEntityPosition(target.handle));
         }
 
@@ -111,9 +109,7 @@ namespace fivenk_rp
         public void TeleportTo(Client sender, Client target)
         {
             var pos = API.getEntityPosition(target.handle);
-
             API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
-
             API.setEntityPosition(target.handle, API.getEntityPosition(sender.handle));
         }
     }
