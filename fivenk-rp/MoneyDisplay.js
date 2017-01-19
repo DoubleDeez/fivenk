@@ -25,7 +25,7 @@ API.onKeyDown.connect(function (Player, args) {
 });
 
 API.onServerEventTrigger.connect(function (name, args) {
-    if (name === "update_money_display") {
+    if (name === "update_cash_display") {
         currentMoney = args[0];
     }
 });
