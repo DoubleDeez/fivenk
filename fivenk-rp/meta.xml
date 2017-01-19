@@ -1,0 +1,19 @@
+﻿<meta>
+  <info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="true" />
+
+	<config src="vehicles.xml" />
+	
+	<script src="Database.cs" type="server" lang="csharp" />
+	<script src="FiveNK.cs" type="server" lang="csharp" />
+	<script src="LoginManager.cs" type="server" lang="csharp" />
+	<script src="VehicleSpawner.cs" type="server" lang="csharp" />
+	<script src="WelcomeMessages.cs" type="server" lang="csharp" />
+	
+	<script src="Admin.cs" type="server" lang="csharp" />
+	<script src="Debug.cs" type="server" lang="csharp" />
+
+	<script src="MoneyDisplay.js" type="client" lang="javascript" />
+	
+	<assembly ref="System.Xml.Serialization.dll" />
+	<assembly ref="System.Xml.dll" />
+</meta>
