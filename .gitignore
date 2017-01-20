@@ -1,8 +1,5 @@
 ## Stuff I added that wasn't being caught
-*.sln
-*.csproj
 Properties/
-App.config
 types-gtanetwork/
 
 ## Ignore Visual Studio temporary files, build results, and
