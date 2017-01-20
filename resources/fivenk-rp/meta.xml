@@ -1,0 +1,32 @@
+﻿<meta>
+	<info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="true" />
+	<!-- Config Files -->
+	<config src="vehicles.xml" />
+
+	<!-- Server C# Files -->
+	<script src="Database.cs" type="server" lang="csharp" />
+	<script src="FiveNK.cs" type="server" lang="csharp" />
+	<script src="Helpers.cs" type="server" lang="csharp" />
+	<script src="LoginManager.cs" type="server" lang="csharp" />
+	<script src="SpawnManager.cs" type="server" lang="csharp" />
+	<script src="VehicleSpawner.cs" type="server" lang="csharp" />
+	<script src="WelcomeMessages.cs" type="server" lang="csharp" />
+
+	<!-- Developer Server C# Files -->
+	<script src="Admin.cs" type="server" lang="csharp" />
+	<script src="Debug.cs" type="server" lang="csharp" />
+
+	<!-- Client JS Files -->
+	<script src="MoneyDisplay.js" type="client" lang="javascript" />
+	<script src="SkinSelector.js" type="client" lang="javascript" />
+
+	<!-- C# References -->
+	<assembly ref="System.Data.dll"/>
+	<assembly ref="System.Data.Common.dll" />
+	<assembly ref="System.Data.SQLite.dll" />
+	<assembly ref="System.Data.SQLite.dll" />
+	<assembly ref="System.Data.SQLite.EF6.dll" />
+	<assembly ref="System.Data.SQLite.Linq.dll" />
+	<assembly ref="System.Xml.dll" />
+	<assembly ref="System.Xml.Serialization.dll" />
+</meta>
