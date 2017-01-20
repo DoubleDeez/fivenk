@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C9A8A6FF-F53D-47B9-A2E8-B976169CDE93}</ProjectGuid>
+    <ProjectGuid>{309F687A-1B83-4B2C-93DE-4A2078B07589}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>fivenk_rp</RootNamespace>
@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fivenk-rp\Admin.cs" />
+    <Compile Include="fivenk-rp\Commands.cs" />
     <Compile Include="fivenk-rp\Database.cs" />
     <Compile Include="fivenk-rp\Debug.cs" />
     <Compile Include="fivenk-rp\FiveNK.cs" />
