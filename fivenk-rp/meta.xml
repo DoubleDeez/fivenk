@@ -6,6 +6,7 @@
 	<!-- Server C# Files -->
 	<script src="Database.cs" type="server" lang="csharp" />
 	<script src="FiveNK.cs" type="server" lang="csharp" />
+	<script src="Helpers.cs" type="server" lang="csharp" />
 	<script src="LoginManager.cs" type="server" lang="csharp" />
 	<script src="VehicleSpawner.cs" type="server" lang="csharp" />
 	<script src="WelcomeMessages.cs" type="server" lang="csharp" />
