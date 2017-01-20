@@ -2,19 +2,22 @@
 using GTANetworkServer;
 using GTANetworkShared;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace fivenk_rp
 {
     public class Command
     {
-        public Command(string cmdString, string helpText="", Acl acl=Acl.Default)
+        public Command(string cmdString, MethodInfo handler, string helpText="", Acl acl=Acl.Default)
         {
             this.cmdString = cmdString;
+            this.handler = handler;
             this.helpText = helpText;
             this.acl = acl;
         }
 
         public string cmdString { get; set; }
+        public MethodInfo handler { get; set; }
         public string helpText { get; set; }
         public Acl acl { get; set; }
     }
@@ -22,32 +25,41 @@ namespace fivenk_rp
 
     public class Commands : Script
     {
+        private Dictionary<string, Command> cmdList;
+
         public Commands()
         {
             API.onChatCommand += onChatCommandHandler;
             API.onResourceStart += onResourceStartHandler;
-            Dictionary<string, Command> cmdList = new Dictionary<string, Command>();
+            this.cmdList = new Dictionary<string, Command>();
         }
 
         private void onResourceStartHandler()
         {
             // build up the list of commands
-            foreach (var property in typeof(Commands).GetProperties())
+            foreach (var method in typeof(Commands).GetMethods())
             {
-                object[] cmdArray = property.GetCustomAttributes(typeof(CmdAttribute), false);
+                object[] cmdArray = method.GetCustomAttributes(typeof(CmdAttribute), false);
                 if (cmdArray.Length > 0)
                 {
                     CmdAttribute cmdAttribute = cmdArray[0] as CmdAttribute;
-                    Command cmd = new Command(cmdAttribute)   
+                    Command cmd = new Command(cmdAttribute.cmdString, method, helpText: cmdAttribute.helpText, acl: cmdAttribute.Acl);
+                    this.cmdList.Add(cmdAttribute.cmdString, cmd);
                 }
             }
         }
 
-        private void onChatCommandHandler(Client sender, string command, CancelEventArgs cancel)
+        private void onChatCommandHandler(Client sender, string cmdString, CancelEventArgs cancel)
         {
-            int senderAcl = Convert.ToInt32(API.shared.getEntityData(sender, "Acl"));
-
-            Attribute.GetCustomAttribute()
+            if (this.cmdList.ContainsKey(cmdString))
+            {
+                Command cmd = this.cmdList[cmdString];
+                Acl senderAcl = (Acl)API.shared.getEntityData(sender, "Acl");
+                if (senderAcl >= cmd.acl)
+                {
+                    cmd.handler.Invoke(this, new object[] { sender });
+                }
+            }
         }
 
         [Cmd("test", "test help", Acl=Acl.Default)]
