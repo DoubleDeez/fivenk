@@ -22,17 +22,36 @@ namespace fivenk_rp
         [Command("car")]
         public void SpawnCarForPlayer(Client sender, VehicleHash model)
         {
-            var rot = API.getEntityRotation(sender.handle);
-            var veh = API.createVehicle(model, sender.position, new Vector3(0, 0, rot.Z), 0, 0);
+            if (CheckPlayerLoggedInWithError(sender))
+            {
+                var rot = API.getEntityRotation(sender.handle);
+                var veh = API.createVehicle(model, sender.position, new Vector3(0, 0, rot.Z), 0, 0);
 
-            API.setPlayerIntoVehicle(sender, veh, -1);
+                API.setPlayerIntoVehicle(sender, veh, -1);
+            }
         }
 
         [Command("skin")]
         public void ChangeSkinCommand(Client sender, PedHash model)
         {
-            API.setPlayerSkin(sender, model);
-            API.sendNativeToPlayer(sender, 0x45EEE61580806D63, sender.handle);
+            if (CheckPlayerLoggedInWithError(sender))
+            {
+                API.setPlayerSkin(sender, model);
+                API.sendNativeToPlayer(sender, 0x45EEE61580806D63, sender.handle);
+            }
+        }
+
+        [Command("Where")]
+        public void WhereAmI(Client sender)
+        {
+            if (CheckPlayerLoggedInWithError(sender))
+            {
+                Vector3 Coords = API.getEntityPosition(sender.handle);
+                if (Coords != null)
+                {
+                    API.sendChatMessageToPlayer(sender, Coords.ToString());
+                }
+            }
         }
 
         private bool CheckPlayerLoggedInWithError(Client player)
