@@ -65,11 +65,11 @@ namespace fivenk_rp
             else
             {
                 Database.LoadPlayerAccount(sender);
-                API.sendChatMessageToPlayer(sender, "~g~Logged in successfully! ~w~Try using ~b~/gun~w~ or ~b~/car~w~");
+                API.sendChatMessageToPlayer(sender, "~g~Logged in successfully! ~w~Use your ~b~Arrow Keys~w~ to select a job");
 
                 // Unfreeze the player
-                //API.call("SpawnManager", "CreateSkinSelection", sender);
                 API.freezePlayer(sender, false);
+                API.call("SpawnManager", "CreateSkinSelection", sender);
 
                 int cash = API.getEntityData(sender, "Cash");
                 API.triggerClientEvent(sender, "update_cash_display", cash);
