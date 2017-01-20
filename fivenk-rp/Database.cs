@@ -37,11 +37,7 @@ namespace fivenk_rp
                 + name + "' LIMIT 1;";
             SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
             SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                return true;
-            }
-            return false;
+            return reader.Read();
         }
 
         public static bool IsPlayerLoggedIn(Client player)
@@ -72,30 +68,20 @@ namespace fivenk_rp
                 + "' AND Password='" + API.shared.getHashSHA256(password) + "' LIMIT 1;";
             SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
             SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                return true;
-            }
-            return false;
+            return reader.Read();
         }
 
         public static void LoadPlayerAccount(Client player)
         {
-            bool LoadSuccessful = false;
             string SQL = "SELECT * FROM players WHERE SocialClubName='"
                    + player.socialClubName + "' LIMIT 1;";
             SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
             SQLiteDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            if (reader.Read())
             {
-                LoadSuccessful = true;
                 API.shared.setEntityData(player, "SocialClubName", reader["SocialClubName"].ToString());
                 API.shared.setEntityData(player, "Level", Convert.ToInt32(reader["Level"]));
                 API.shared.setEntityData(player, "Cash", Convert.ToInt32(reader["Cash"]));
-            }
-
-            if (LoadSuccessful)
-            {
                 API.shared.setEntityData(player, LOGGED_IN_KEY, true);
             }
         }
