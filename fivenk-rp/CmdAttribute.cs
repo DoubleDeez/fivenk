@@ -9,9 +9,6 @@ namespace fivenk_rp
     [AttributeUsage(AttributeTargets.Method)]
     public class CmdAttribute : Attribute
     {
-        public readonly string helpText;
-        public readonly string cmdString;
-
         public CmdAttribute(string cmd)
         {
             this.cmdString = cmd;   
@@ -23,7 +20,8 @@ namespace fivenk_rp
             this.helpText = helpText;
         }
 
-
+        public readonly string helpText;
+        public readonly string cmdString;
         public Acl Acl { get; set; }
     }
 }
