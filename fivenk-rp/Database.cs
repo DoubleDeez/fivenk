@@ -81,6 +81,7 @@ namespace fivenk_rp
             {
                 API.shared.setEntityData(player, "SocialClubName", reader["SocialClubName"].ToString());
                 API.shared.setEntityData(player, "Level", Convert.ToInt32(reader["Level"]));
+// crashes                API.shared.setEntityData(player, "Job", Convert.ToInt32(reader["Job"]));
                 API.shared.setEntityData(player, "Cash", Convert.ToInt32(reader["Cash"]));
                 API.shared.setEntityData(player, LOGGED_IN_KEY, true);
             }
@@ -95,6 +96,7 @@ namespace fivenk_rp
 
             string SQL = "UPDATE players SET Cash='" + API.shared.getEntityData(player, "Cash")
                 + "', Level='" + API.shared.getEntityData(player, "Level")
+                + "', Job='" + API.shared.getEntityData(player, "Job")
                 + "' WHERE SocialClubName='" + player.socialClubName + "';";
             SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
             command.ExecuteNonQuery();
