@@ -28,6 +28,13 @@ namespace fivenk_rp
             API.setPlayerIntoVehicle(sender, veh, -1);
         }
 
+        [Command("skin")]
+        public void ChangeSkinCommand(Client sender, PedHash model)
+        {
+            API.setPlayerSkin(sender, model);
+            API.sendNativeToPlayer(sender, 0x45EEE61580806D63, sender.handle);
+        }
+
         private bool CheckPlayerLoggedInWithError(Client player)
         {
             if (!Database.IsPlayerLoggedIn(player))

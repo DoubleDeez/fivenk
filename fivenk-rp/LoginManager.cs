@@ -22,6 +22,7 @@ namespace fivenk_rp
 
         public void OnPlayerDisconnected(Client player, string reason)
         {
+            Database.SavePlayerAccount(player);
             if (API.isAclEnabled())
             {
                 API.logoutPlayer(player);
@@ -70,8 +71,8 @@ namespace fivenk_rp
                 //API.call("SpawnManager", "CreateSkinSelection", sender);
                 API.freezePlayer(sender, false);
 
-                int money = API.getEntityData(sender, "Money");
-                API.triggerClientEvent(sender, "update_money_display", money);
+                int cash = API.getEntityData(sender, "Cash");
+                API.triggerClientEvent(sender, "update_cash_display", cash);
             }
         }
 
@@ -103,6 +104,7 @@ namespace fivenk_rp
                     API.resetEntityData(client, data);
                 }
             }
+            Database.DeInit();
         }
     }
 }
