@@ -1,131 +1,103 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
+﻿using System.IO;
+using System.Data.SQLite;
 using GTANetworkServer;
+using System;
 
 namespace fivenk_rp
 {
-    // TODO : Switch this to use MySQL instead of flat file
     public static class Database
     {
-        public const string ACCOUNT_FOLDER = "cnc_accounts";
+        private const string FIVENK_DATABASE = "fnk_db.sqlite";
+        private const string LOGGED_IN_KEY = "LOGGED_IN";
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_CASH = 1000;
+
+        private static SQLiteConnection DATABASE;
 
         public static void Init()
         {
-            if (!Directory.Exists(ACCOUNT_FOLDER))
-                Directory.CreateDirectory(ACCOUNT_FOLDER);
-
+            if (!File.Exists(FIVENK_DATABASE))
+            {
+                SQLiteConnection.CreateFile(FIVENK_DATABASE);
+                API.shared.consoleOutput("Created Database File!");
+            }
+            DATABASE = new SQLiteConnection("Data Source=" + FIVENK_DATABASE + ";Version=3;");
+            DATABASE.Open();
             API.shared.consoleOutput("Database initialized!");
+        }
+
+        public static void DeInit()
+        {
+            DATABASE.Close();
         }
 
         public static bool DoesAccountExist(string name)
         {
-            var path = Path.Combine(ACCOUNT_FOLDER, name);
-            return Directory.Exists(path);
+            string SQL = "SELECT SocialClubName FROM players WHERE SocialClubName='"
+                + name + "' LIMIT 1;";
+            SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
+            SQLiteDataReader reader = command.ExecuteReader();
+            return reader.Read();
         }
 
         public static bool IsPlayerLoggedIn(Client player)
         {
-            return API.shared.getEntityData(player, "LOGGED_IN") == true;
+            return API.shared.getEntityData(player, LOGGED_IN_KEY) == true;
         }
 
         public static void CreatePlayerAccount(Client player, string password)
         {
-            var path = Path.Combine(ACCOUNT_FOLDER, player.socialClubName);
-
-            //if (!path.StartsWith(Directory.GetCurrentDirectory())) return;
-
-            var data = new PlayerData()
+            if (DoesAccountExist(player.socialClubName))
             {
-                socialClubName = player.socialClubName,
-                Password = API.shared.getHashSHA256(password),
-            };
+                return;
+            }
 
-            var ser = API.shared.toJson(data);
-
-            File.WriteAllText(path, ser);
+            string SQL = "INSERT INTO players (SocialClubName, Password, Level, Cash) values ("
+                + "'" + player.socialClubName + "', "
+                + "'" + API.shared.getHashSHA256(password) + "', "
+                + "'" + DEFAULT_LEVEL + "', "
+                + "'" + DEFAULT_CASH + "');";
+            SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
+            command.ExecuteNonQuery();
         }
 
         public static bool TryLoginPlayer(Client player, string password)
         {
-            var path = Path.Combine(ACCOUNT_FOLDER, player.socialClubName);
-
-            //if (!path.StartsWith(Directory.GetCurrentDirectory())) return false;
-
-            var txt = File.ReadAllText(path);
-
-            PlayerData playerObj = API.shared.fromJson(txt).ToObject<PlayerData>();
-
-            return API.shared.getHashSHA256(password) == playerObj.Password;
+            string SQL = "SELECT SocialClubName FROM players WHERE SocialClubName='"
+                + player.socialClubName
+                + "' AND Password='" + API.shared.getHashSHA256(password) + "' LIMIT 1;";
+            SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
+            SQLiteDataReader reader = command.ExecuteReader();
+            return reader.Read();
         }
 
         public static void LoadPlayerAccount(Client player)
         {
-            var path = Path.Combine(ACCOUNT_FOLDER, player.socialClubName);
-
-            //if (!path.StartsWith(Directory.GetCurrentDirectory())) return;
-
-            var txt = File.ReadAllText(path);
-
-            PlayerData playerObj = API.shared.fromJson(txt).ToObject<PlayerData>();
-
-            API.shared.setEntityData(player, "LOGGED_IN", true);
-
-            foreach (var property in typeof(PlayerData).GetProperties())
+            string SQL = "SELECT * FROM players WHERE SocialClubName='"
+                   + player.socialClubName + "' LIMIT 1;";
+            SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
+            SQLiteDataReader reader = command.ExecuteReader();
+            if (reader.Read())
             {
-                if (property.GetCustomAttributes(typeof (XmlIgnoreAttribute), false).Length > 0) continue;
-
-                API.shared.setEntityData(player, property.Name, property.GetValue(playerObj, null));
+                API.shared.setEntityData(player, "SocialClubName", reader["SocialClubName"].ToString());
+                API.shared.setEntityData(player, "Level", Convert.ToInt32(reader["Level"]));
+                API.shared.setEntityData(player, "Cash", Convert.ToInt32(reader["Cash"]));
+                API.shared.setEntityData(player, LOGGED_IN_KEY, true);
             }
         }
 
         public static void SavePlayerAccount(Client player)
         {
-            var path = Path.Combine(ACCOUNT_FOLDER, player.socialClubName);
-
-            //if (!path.StartsWith(Directory.GetCurrentDirectory())) return;
-
-            if (!File.Exists(path)) return;
-
-            var old = API.shared.fromJson(File.ReadAllText(path));
-
-            var data = new PlayerData()
+            if (!DoesAccountExist(player.socialClubName))
             {
-                socialClubName = player.socialClubName,
-                Password = old.Password,
-            };
-
-            foreach (var property in typeof(PlayerData).GetProperties())
-            {
-                if (property.GetCustomAttributes(typeof(XmlIgnoreAttribute), false).Length > 0) continue;
-
-                if (API.shared.hasEntityData(player, property.Name))
-                {
-                    property.SetValue(data, API.shared.getEntityData(player, property.Name), null);
-                }
+                return;
             }
 
-            var ser = API.shared.toJson(data);
-
-            File.WriteAllText(path, ser);
+            string SQL = "UPDATE players SET Cash='" + API.shared.getEntityData(player, "Cash")
+                + "', Level='" + API.shared.getEntityData(player, "Level")
+                + "' WHERE SocialClubName='" + player.socialClubName + "';";
+            SQLiteCommand command = new SQLiteCommand(SQL, DATABASE);
+            command.ExecuteNonQuery();
         }
-    }
-
-    public class PlayerData
-    {
-        [XmlIgnore]
-        public string socialClubName { get; set; }
-        [XmlIgnore]
-        public string Password { get; set; }
-
-        public int Level { get; set; }
-        public int WantedLevel { get; set; }
-        public int Money { get; set; }
-        public List<int> Crimes { get; set; } 
-        public bool Jailed { get; set; }
-        public uint JailTime { get; set; }
     }
 }
