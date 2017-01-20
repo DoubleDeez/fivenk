@@ -1,6 +1,4 @@
 ## Stuff I added that wasn't being caught
-*.sln
-*.csproj
 Properties/
 types-gtanetwork/
 
