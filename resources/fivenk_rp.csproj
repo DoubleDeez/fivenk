@@ -75,21 +75,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fivenk-rp\Admin.cs" />
-    <Compile Include="fivenk-rp\Database.cs" />
-    <Compile Include="fivenk-rp\Debug.cs" />
+    <Compile Include="fivenk-rp\Accounts\Database.cs" />
+    <Compile Include="fivenk-rp\Accounts\LoginManager.cs" />
+    <Compile Include="fivenk-rp\Commands\Admin.cs" />
+    <Compile Include="fivenk-rp\Commands\Debug.cs" />
     <Compile Include="fivenk-rp\FiveNK.cs" />
-    <Compile Include="fivenk-rp\Helpers.cs" />
-    <Compile Include="fivenk-rp\LoginManager.cs" />
-    <Compile Include="fivenk-rp\SpawnManager.cs" />
-    <Compile Include="fivenk-rp\VehicleSpawner.cs" />
-    <Compile Include="fivenk-rp\WelcomeMessages.cs" />
+    <Compile Include="fivenk-rp\Helpers\AsyncHelper.cs" />
+    <Compile Include="fivenk-rp\Spawners\SpawnManager.cs" />
+    <Compile Include="fivenk-rp\Spawners\VehicleSpawner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fivenk-rp\Client\MoneyDisplay.js" />
+    <Content Include="fivenk-rp\Client\SkinSelector.js" />
     <Content Include="fivenk-rp\meta.xml" />
-    <Content Include="fivenk-rp\MoneyDisplay.js" />
-    <Content Include="fivenk-rp\SkinSelector.js" />
     <Content Include="fivenk-rp\vehicles.xml" />
     <Content Include="speedometer\d3.v2.js" />
     <Content Include="speedometer\gauge.js" />
@@ -113,6 +112,9 @@
     <TypeScriptCompile Include="types-gtanetwork\System.d.ts" />
     <TypeScriptCompile Include="types-gtanetwork\System.Drawing.dll.d.ts" />
     <TypeScriptCompile Include="types-gtanetwork\Xilium.CefGlue.dll.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="fivenk-rp\Client\CEF\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\System.Data.SQLite.Core.1.0.104.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.104.0\build\net451\System.Data.SQLite.Core.targets')" />

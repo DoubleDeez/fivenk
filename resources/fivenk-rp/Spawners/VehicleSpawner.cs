@@ -6,6 +6,8 @@ namespace fivenk_rp
 {
     public class VehicleSpawner : Script
     {
+        private const string VEHICLES_CONFIG = "vehicles.xml";
+
         public VehicleSpawner()
         {
             API.onResourceStart += onResStart;
@@ -13,7 +15,11 @@ namespace fivenk_rp
 
         public void onResStart()
         {
-            var cars = API.loadConfig("vehicles.xml");
+            var cars = API.loadConfig(VEHICLES_CONFIG);
+            if (cars == null)
+            {
+                return;
+            }
 
             foreach (var element in cars.getElementsByType("vehicle"))
             {

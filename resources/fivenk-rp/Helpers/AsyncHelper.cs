@@ -8,7 +8,7 @@ using GTANetworkShared;
 
 namespace fivenk_rp
 {
-    class Helpers
+    class AsyncHelpers
     {
         /** Launches an async task after the specified amount of time */
         public static void Delay(int ms, Action action)

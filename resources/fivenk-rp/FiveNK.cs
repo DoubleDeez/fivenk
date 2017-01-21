@@ -12,12 +12,24 @@ namespace fivenk_rp
     {
         public FiveNK()
         {
-            API.onResourceStart += OnResourceStart;
+            API.onResourceStart += OnResourceStartHandler;
+            API.onPlayerConnected += onPlayerConnectHandler;
+            API.onPlayerDisconnected += onPlayerDisconnectHandler;
         }
 
-        public void OnResourceStart()
+        public void OnResourceStartHandler()
         {
             API.setGamemodeName("FiveNK-RP");
+        }
+
+        public void onPlayerConnectHandler(Client player)
+        {
+            API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~joined.");
+        }
+
+        public void onPlayerDisconnectHandler(Client player, string reason)
+        {
+            API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~quit. (" + reason + ")");
         }
     }
 }

@@ -1,24 +1,34 @@
 ﻿<meta>
 	<info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="true" />
 	<!-- Config Files -->
-	<config src="vehicles.xml" />
+	<config src="vehicles.xml" type="server" />
 
-	<!-- Server C# Files -->
-	<script src="Database.cs" type="server" lang="csharp" />
+
+	<!-- Main Server C# Files -->
 	<script src="FiveNK.cs" type="server" lang="csharp" />
-	<script src="Helpers.cs" type="server" lang="csharp" />
-	<script src="LoginManager.cs" type="server" lang="csharp" />
-	<script src="SpawnManager.cs" type="server" lang="csharp" />
-	<script src="VehicleSpawner.cs" type="server" lang="csharp" />
-	<script src="WelcomeMessages.cs" type="server" lang="csharp" />
 
-	<!-- Developer Server C# Files -->
-	<script src="Admin.cs" type="server" lang="csharp" />
-	<script src="Debug.cs" type="server" lang="csharp" />
+	<!-- Account Server C# Files -->
+	<script src="Accounts/Database.cs" type="server" lang="csharp" />
+	<script src="Accounts/LoginManager.cs" type="server" lang="csharp" />
+
+	<!-- CommandServer C# Files -->
+	<script src="Commands/Admin.cs" type="server" lang="csharp" />
+	<script src="Commands/Debug.cs" type="server" lang="csharp" />
+
+	<!-- Helper Server C# Files -->
+	<script src="Helpers/AsyncHelper.cs" type="server" lang="csharp" />
+
+	<!-- SpawnerServer C# Files -->
+	<script src="Spawners/SpawnManager.cs" type="server" lang="csharp" />
+	<script src="Spawners/VehicleSpawner.cs" type="server" lang="csharp" />
+
 
 	<!-- Client JS Files -->
-	<script src="MoneyDisplay.js" type="client" lang="javascript" />
-	<script src="SkinSelector.js" type="client" lang="javascript" />
+	<script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
+	<script src="Client/SkinSelector.js" type="client" lang="javascript" />
+
+	<!-- CEF Files -->
+	<!-- None yet -->
 
 	<!-- C# References -->
 	<assembly ref="System.Data.dll"/>
