@@ -583,6 +583,7 @@ declare namespace GTANetwork.Javascript {
         destroyCefBrowser(browser: GTANetwork.GUI.Browser): void;
         isCefBrowserInitialized(browser: GTANetwork.GUI.Browser): boolean;
         waitUntilCefBrowserInit(browser: GTANetwork.GUI.Browser): void;
+        waitUntilCefBrowserLoaded(browser: GTANetwork.GUI.Browser): void;
         setCefBrowserSize(browser: GTANetwork.GUI.Browser, width: number, height: number): void;
         getCefBrowserSize(browser: GTANetwork.GUI.Browser): System.Drawing.Size;
         setCefBrowserHeadless(browser: GTANetwork.GUI.Browser, headless: boolean): void;
@@ -859,7 +860,8 @@ declare namespace GTANetwork.Javascript {
         isVehicle(ent: GTANetwork.Util.LocalHandle): boolean;
         isProp(ent: GTANetwork.Util.LocalHandle): boolean;
         toFloat(d: number): number;
-        f(value: number): GTANetwork.Javascript.ScriptContext_fArg;
+        // f(value: number): GTANetwork.Javascript.ScriptContext_fArg;
+        f(value: number): any;
         sleep(ms: number): void;
         startAudio(path: string, looped: boolean): void;
         pauseAudio(): void;
