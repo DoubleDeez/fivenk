@@ -18,7 +18,7 @@
 	<script src="Database/Models/Player.cs" type="server" lang="csharp" />
 
 	<!-- CommandServer C# Files -->
-	<script src="Commands/Acl.cs" type="server" lang="csharp" />
+  <script src="Commands/Acl.cs" type="server" lang="csharp" />
 	<script src="Commands/Admin.cs" type="server" lang="csharp" />
 	<script src="Commands/CmdAttribute.cs" type="server" lang="csharp" />
 	<script src="Commands/Debug.cs" type="server" lang="csharp" />
