@@ -52,7 +52,7 @@ namespace fivenk_rp
                 return;
             }
 
-            string SQL = "INSERT INTO players (SocialClubName, Password, Level, Cash) values ("
+            string SQL = "INSERT INTO players (SocialClubName, Password, Acl, Level, Cash) values ("
                 + "'" + player.socialClubName + "', "
                 + "'" + API.shared.getHashSHA256(password) + "', "
                 + "'" + Acl.Default + "', "
@@ -81,7 +81,7 @@ namespace fivenk_rp
             if (reader.Read())
             {
                 API.shared.setEntityData(player, "SocialClubName", reader["SocialClubName"].ToString());
-                API.shared.setEntityData(player, "Acl", Convert.ToInt32(reader["ACL"]));
+                API.shared.setEntityData(player, "Acl", Convert.ToInt32(reader["Acl"]));
                 API.shared.setEntityData(player, "Level", Convert.ToInt32(reader["Level"]));
 // crashes                API.shared.setEntityData(player, "Job", Convert.ToInt32(reader["Job"]));
                 API.shared.setEntityData(player, "Cash", Convert.ToInt32(reader["Cash"]));
