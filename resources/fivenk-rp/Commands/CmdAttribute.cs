@@ -22,6 +22,6 @@ namespace fivenk_rp
 
         public readonly string helpText;
         public readonly string cmdString;
-        public Acl Acl { get; set; }
+        public Acl acl { get; set; }
     }
 }

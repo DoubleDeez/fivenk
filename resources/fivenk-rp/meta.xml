@@ -21,7 +21,6 @@
 	<script src="Commands/Acl.cs" type="server" lang="csharp" />
 	<script src="Commands/Admin.cs" type="server" lang="csharp" />
 	<script src="Commands/CmdAttribute.cs" type="server" lang="csharp" />
-	<script src="Commands/Command.cs" type="server" lang="csharp" />
 	<script src="Commands/Debug.cs" type="server" lang="csharp" />
 
 	<!-- Helper Server C# Files -->
