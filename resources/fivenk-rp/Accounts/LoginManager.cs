@@ -100,7 +100,7 @@ namespace fivenk_rp
             byte[] buffer = new byte[255];
             rng.GetBytes(buffer);
 
-            if(Database.CreatePlayerAccount(sender, password, BitConverter.ToString(buffer)))
+            if (Database.CreatePlayerAccount(sender, password, BitConverter.ToString(buffer)))
             {
                 API.sendChatMessageToPlayer(sender, "~g~Account created! ~w~Now log in with ~y~/login [password]");
             }
