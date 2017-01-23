@@ -2,7 +2,7 @@
 using GTANetworkServer;
 using GTANetworkShared;
 
-namespace RPGResource
+namespace fivenk_rp
 {
     public class SpawnManager : Script
     {
@@ -13,13 +13,6 @@ namespace RPGResource
         private readonly Vector3 _copSpawnpoint = new Vector3(447.1f, -984.21f, 30.69f);
         private readonly Vector3 _crookSpawnpoint = new Vector3(-25.27f, -1554.27f, 30.69f);
 
-        enum Jobs
-        {
-            NoJob = -1,
-            Citizen,
-            Cop,
-            MAX
-        }
 
         public SpawnManager()
         {

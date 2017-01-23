@@ -51,11 +51,11 @@ namespace fivenk_rp
 
         private void onChatCommandHandler(Client sender, string cmdString, CancelEventArgs cancel)
         {
-            if (this.cmdList.ContainsKey(cmdString))
+            Player player = ClientHelper.GetPlayerFromClient(sender);
+            if (player != null && this.cmdList.ContainsKey(cmdString))
             {
                 Command cmd = this.cmdList[cmdString];
-                Acl senderAcl = (Acl)API.shared.getEntityData(sender, "Acl");
-                if (senderAcl >= cmd.acl)
+                if (player.AclLevel >= cmd.acl)
                 {
                     cmd.handler.Invoke(this, new object[] { sender });
                 }

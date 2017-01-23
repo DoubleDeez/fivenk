@@ -1,6 +1,7 @@
 # Don't commit the junction (just in case)
 server/resources/
 server/settings.xml
+server/fnk_db.sqlite
 !server/
 
 ## Ignore Visual Studio temporary files, build results, and
