@@ -54,7 +54,20 @@ namespace fivenk_rp
         public void WhisperPlayer(Client sender, Client target, string message)
         {
             API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
-            target.setSyncedData("ReplyTo", sender);
+            API.setEntityData(target, "ReplyTo", sender);
+        }
+
+        [Command("reply", Alias = "r", GreedyArg = true)]
+        public void ReplyPlayer(Client sender, string message)
+        {
+            Client target = API.getEntityData(sender, "ReplyTo");
+            if (target == null)
+            {
+                API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ You have no one to reply to.");
+                return;
+            }
+            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            API.setEntityData(target, "ReplyTo", sender);
         }
     }
 }
