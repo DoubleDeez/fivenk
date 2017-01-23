@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{309F687A-1B83-4B2C-93DE-4A2078B07589}</ProjectGuid>
+    <ProjectGuid>{C9A8A6FF-F53D-47B9-A2E8-B976169CDE93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>fivenk_rp</RootNamespace>
@@ -91,7 +91,9 @@
   <ItemGroup>
     <Content Include="fivenk-rp\Client\MoneyDisplay.js" />
     <Content Include="fivenk-rp\Client\SkinSelector.js" />
-    <Content Include="fivenk-rp\meta.xml" />
+    <Content Include="fivenk-rp\meta.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="fivenk-rp\vehicles.xml" />
     <Content Include="speedometer\d3.v2.js" />
     <Content Include="speedometer\gauge.js" />
