@@ -10,8 +10,12 @@
 	<script src="FiveNK.cs" type="server" lang="csharp" />
 
 	<!-- Account Server C# Files -->
-	<script src="Accounts/Database.cs" type="server" lang="csharp" />
 	<script src="Accounts/LoginManager.cs" type="server" lang="csharp" />
+
+	<!-- Database Server C# Files -->
+	<script src="Database/Database.cs" type="server" lang="csharp" />
+	<script src="Database/Models/Jobs.cs" type="server" lang="csharp" />
+	<script src="Database/Models/Player.cs" type="server" lang="csharp" />
 
 	<!-- CommandServer C# Files -->
 	<script src="Commands/Acl.cs" type="server" lang="csharp" />
@@ -22,6 +26,7 @@
 
 	<!-- Helper Server C# Files -->
 	<script src="Helpers/AsyncHelper.cs" type="server" lang="csharp" />
+	<script src="Helpers/ClientHelper.cs" type="server" lang="csharp" />
 
 	<!-- SpawnerServer C# Files -->
 	<script src="Spawners/SpawnManager.cs" type="server" lang="csharp" />
@@ -36,12 +41,15 @@
 	<!-- None yet -->
 
 	<!-- C# References -->
+	<assembly ref="SQLite-net.dll" />
+	<assembly ref="SQLitePCLRaw.batteries_green.dll" />
+	<assembly ref="SQLitePCLRaw.batteries_v2.dll" />
+	<assembly ref="SQLitePCLRaw.core.dll" />
+	<assembly ref="SQLitePCLRaw.provider.e_sqlite3.dll" />
 	<assembly ref="System.Data.dll"/>
 	<assembly ref="System.Data.Common.dll" />
-	<assembly ref="System.Data.SQLite.dll" />
-	<assembly ref="System.Data.SQLite.dll" />
-	<assembly ref="System.Data.SQLite.EF6.dll" />
-	<assembly ref="System.Data.SQLite.Linq.dll" />
+	<assembly ref="System.Linq.Expressions.dll"/>
+	<assembly ref="System.Runtime.dll" />
 	<assembly ref="System.Xml.dll" />
 	<assembly ref="System.Xml.Serialization.dll" />
 </meta>

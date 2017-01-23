@@ -1,5 +1,7 @@
 ﻿using GTANetworkServer;
 using GTANetworkShared;
+using System;
+using System.Security.Cryptography;
 
 namespace fivenk_rp
 {
@@ -64,15 +66,17 @@ namespace fivenk_rp
             }
             else
             {
-                Database.LoadPlayerAccount(sender);
                 API.sendChatMessageToPlayer(sender, "~g~Logged in successfully! ~w~Use your ~b~Arrow Keys~w~ to select a job");
-
                 // Unfreeze the player
                 API.freezePlayer(sender, false);
                 API.call("SpawnManager", "CreateSkinSelection", sender);
 
-                int cash = API.getEntityData(sender, "Cash");
-                API.triggerClientEvent(sender, "update_cash_display", cash);
+                Player senderPlayer = ClientHelper.GetPlayerFromClient(sender);
+                if (senderPlayer != null)
+                {
+                    int cash = senderPlayer.Cash;
+                    API.triggerClientEvent(sender, "update_cash_display", cash);
+                }
             }
         }
 
@@ -87,12 +91,23 @@ namespace fivenk_rp
 
             if (Database.DoesAccountExist(sender.socialClubName))
             {
-                API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~An account linked to this Social Club handle already exists!");
+                API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~An account linked to your Social Club name already exists!");
                 return;
             }
 
-            Database.CreatePlayerAccount(sender, password);
-            API.sendChatMessageToPlayer(sender, "~g~Account created! ~w~Now log in with ~y~/login [password]");
+            // Generate a salt for the password
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] buffer = new byte[255];
+            rng.GetBytes(buffer);
+
+            if (Database.CreatePlayerAccount(sender, password, BitConverter.ToString(buffer)))
+            {
+                API.sendChatMessageToPlayer(sender, "~g~Account created! ~w~Now log in with ~y~/login [password]");
+            }
+            else
+            {
+                API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~We failed to create your account, please try again later.");
+            }
         }
 
         public void OnResourceStop()
