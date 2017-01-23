@@ -41,5 +41,13 @@ namespace fivenk_rp
                 API.setEntityInvincible(player.handle, false);
             });
         }
+
+        [Command("god")]
+        public void ToggleGodMode(Client sender)
+        {
+            bool isEnabled = !API.getEntityInvincible(sender);
+            API.setEntityInvincible(sender, isEnabled);
+            API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
+        }
     }
 }
