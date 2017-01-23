@@ -49,5 +49,12 @@ namespace fivenk_rp
             API.setEntityInvincible(sender, isEnabled);
             API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
         }
+
+        [Command("whisper", Alias = "w", GreedyArg = true)]
+        public void WhisperPlayer(Client sender, Client target, string message)
+        {
+            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            target.setSyncedData("ReplyTo", sender);
+        }
     }
 }
