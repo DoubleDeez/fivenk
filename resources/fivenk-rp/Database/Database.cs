@@ -33,8 +33,7 @@ namespace fivenk_rp
 
         public static bool DoesAccountExist(string name)
         {
-            TableQuery<Player> Query = DATABASE.Table<Player>().Where(p => (p.SocialClubName == name));
-            return Query.Count() > 0;
+            return DATABASE.Table<Player>().Where(p => (p.SocialClubName == name)).Count() > 0;
         }
 
         public static bool IsPlayerLoggedIn(Client player)
@@ -71,8 +70,7 @@ namespace fivenk_rp
 
         public static bool TryLoginPlayer(Client player, string password)
         {
-            TableQuery<Player> Query = DATABASE.Table<Player>().Where(p => (p.SocialClubName == player.socialClubName));
-            Player PlayerFromDB = Query.First();
+            Player PlayerFromDB = DATABASE.Table<Player>().Where(p => (p.SocialClubName == player.socialClubName)).First();
             if (PlayerFromDB == null)
             {
                 return false;

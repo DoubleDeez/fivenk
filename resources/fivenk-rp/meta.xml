@@ -26,6 +26,7 @@
 
 	<!-- Helper Server C# Files -->
 	<script src="Helpers/AsyncHelper.cs" type="server" lang="csharp" />
+	<script src="Helpers/ClientHelper.cs" type="server" lang="csharp" />
 
 	<!-- SpawnerServer C# Files -->
 	<script src="Spawners/SpawnManager.cs" type="server" lang="csharp" />
