@@ -65,7 +65,7 @@ namespace fivenk_rp
         [Cmd("test", "test help", Acl=Acl.Default)]
         private void testCmd(Client sender)
         {
-            
+
         }
     }
 }

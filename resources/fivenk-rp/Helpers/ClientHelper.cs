@@ -14,5 +14,11 @@ namespace fivenk_rp
         {
             return API.shared.getEntityData(client, "Player");
         }
+
+        public static bool DoesClientHavePermission(Client client, Acl AclLevel)
+        {
+            Player player = ClientHelper.GetPlayerFromClient(client);
+            return (player != null && player.AclLevel >= AclLevel);
+        }
     }
 }
