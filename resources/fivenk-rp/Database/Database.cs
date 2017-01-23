@@ -70,6 +70,11 @@ namespace fivenk_rp
 
         public static bool TryLoginPlayer(Client player, string password)
         {
+            if (!DoesAccountExist(player.socialClubName))
+            {
+                return false;
+            }
+
             Player PlayerFromDB = DATABASE.Table<Player>().Where(p => (p.SocialClubName == player.socialClubName)).First();
             if (PlayerFromDB == null)
             {

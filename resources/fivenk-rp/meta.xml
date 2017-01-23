@@ -4,34 +4,8 @@
 	<config src="vehicles.xml" type="server" />
 
 	<!-- Enable debugging -->
-	<script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-
-	<!-- Main Server C# Files -->
-	<script src="FiveNK.cs" type="server" lang="csharp" />
-
-	<!-- Account Server C# Files -->
-	<script src="Accounts/LoginManager.cs" type="server" lang="csharp" />
-
-	<!-- Database Server C# Files -->
-	<script src="Database/Database.cs" type="server" lang="csharp" />
-	<script src="Database/Models/Jobs.cs" type="server" lang="csharp" />
-	<script src="Database/Models/Player.cs" type="server" lang="csharp" />
-
-	<!-- CommandServer C# Files -->
-	<script src="Commands/Acl.cs" type="server" lang="csharp" />
-	<script src="Commands/Admin.cs" type="server" lang="csharp" />
-	<script src="Commands/CmdAttribute.cs" type="server" lang="csharp" />
-	<script src="Commands/Command.cs" type="server" lang="csharp" />
-	<script src="Commands/Debug.cs" type="server" lang="csharp" />
-
-	<!-- Helper Server C# Files -->
-	<script src="Helpers/AsyncHelper.cs" type="server" lang="csharp" />
-	<script src="Helpers/ClientHelper.cs" type="server" lang="csharp" />
-
-	<!-- SpawnerServer C# Files -->
-	<script src="Spawners/SpawnManager.cs" type="server" lang="csharp" />
-	<script src="Spawners/VehicleSpawner.cs" type="server" lang="csharp" />
-
+	<!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
+	<script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
 
 	<!-- Client JS Files -->
 	<script src="Client/MoneyDisplay.js" type="client" lang="javascript" />

@@ -13,8 +13,9 @@ namespace fivenk_rp
         public FiveNK()
         {
             API.onResourceStart += OnResourceStartHandler;
-            API.onPlayerConnected += onPlayerConnectHandler;
-            API.onPlayerDisconnected += onPlayerDisconnectHandler;
+            API.onPlayerConnected += OnPlayerConnectHandler;
+            API.onPlayerDisconnected += OnPlayerDisconnectHandler;
+            API.onPlayerRespawn += OnPlayerRespawnHandler;
         }
 
         public void OnResourceStartHandler()
@@ -22,14 +23,23 @@ namespace fivenk_rp
             API.setGamemodeName("FiveNK-RP");
         }
 
-        public void onPlayerConnectHandler(Client player)
+        public void OnPlayerConnectHandler(Client player)
         {
             API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~joined.");
         }
 
-        public void onPlayerDisconnectHandler(Client player, string reason)
+        public void OnPlayerDisconnectHandler(Client player, string reason)
         {
             API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~quit. (" + reason + ")");
+        }
+
+        public void OnPlayerRespawnHandler(Client player)
+        {
+            API.setEntityInvincible(player.handle, true);
+            AsyncHelpers.Delay(10000, () =>
+            {
+                API.setEntityInvincible(player.handle, false);
+            });
         }
     }
 }
