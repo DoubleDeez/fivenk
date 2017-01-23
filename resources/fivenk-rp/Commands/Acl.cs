@@ -8,6 +8,7 @@ namespace fivenk_rp
 {
     public enum Acl
     {
+        NotLoggedIn = -1,
         Default,
         Moderator,
         Admin

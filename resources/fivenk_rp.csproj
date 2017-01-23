@@ -86,11 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fivenk-rp\Accounts\LoginManager.cs" />
+    <Compile Include="fivenk-rp\Commands\AclAttribute.cs" />
     <Compile Include="fivenk-rp\Commands\Admin.cs" />
     <Compile Include="fivenk-rp\Commands\Debug.cs" />
-    <Compile Include="fivenk-rp\Commands\Command.cs" />
     <Compile Include="fivenk-rp\Commands\Acl.cs" />
-    <Compile Include="fivenk-rp\Commands\CmdAttribute.cs" />
+    <Compile Include="fivenk-rp\Commands\General.cs" />
     <Compile Include="fivenk-rp\Database\Database.cs" />
     <Compile Include="fivenk-rp\Database\Models\Jobs.cs" />
     <Compile Include="fivenk-rp\Database\Models\Player.cs" />
