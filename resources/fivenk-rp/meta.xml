@@ -39,6 +39,8 @@
 	<!-- CEF Files -->
 	<!-- None yet -->
 
+  <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
+  
 	<!-- C# References -->
 	<assembly ref="SQLite-net.dll" />
 	<assembly ref="SQLitePCLRaw.batteries_green.dll" />
