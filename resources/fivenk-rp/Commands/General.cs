@@ -50,8 +50,6 @@ namespace fivenk_rp
         private void listAllCommands(Client sender)
         {
             List<string> commands = new List<string>();
-            //Player player = API.shared.getEntityData(sender, "Player");
-            //Acl senderAcl = player == null ? Acl.NotLoggedIn : player.AclLevel;
 
             Assembly assembly = typeof(General).Assembly;
             IEnumerable<MethodInfo> commandMethods = from type in assembly.GetTypes()
@@ -61,8 +59,6 @@ namespace fivenk_rp
             foreach (var method in commandMethods)
             {
                 Acl methodAcl = CommandHelper.GetMethodAcl(method);
-                //AclAttribute aclAttribute = method.GetCustomAttribute<AclAttribute>(false);
-                //Acl methodAcl = aclAttribute == null ? Acl.NotLoggedIn : aclAttribute.acl;
                 if(ClientHelper.DoesClientHavePermission(sender, methodAcl))
                 {
                     CommandAttribute commandAttribute = method.GetCustomAttribute<CommandAttribute>(false);
