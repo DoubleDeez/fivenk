@@ -1,5 +1,5 @@
-<meta>
-	<info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="false" />
+﻿<meta>
+	<info name="FiveNK Roleplay" description="A light roleplay server that is under development." author="DoubleDeez" version="1.0" shadowcopy="false" />
 	<!-- Config Files -->
 	<config src="vehicles.xml" type="server" />
 
