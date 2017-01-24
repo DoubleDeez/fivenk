@@ -7,12 +7,22 @@
 	<!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
 	<script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
 
+
 	<!-- Client JS Files -->
 	<script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
 	<script src="Client/SkinSelector.js" type="client" lang="javascript" />
+	<script src="Client/Speedometer.js" type="client" lang="javascript" />
 
-	<!-- CEF Files -->
-	<!-- None yet -->
+
+	<!-- CEF Font Files -->
+	<file src="Client/CEF/Fonts/Cornerstone.ttf" />
+
+	<!-- CEF CSS Files -->
+	<file src="Client/CEF/CSS/speedometer.css" />
+
+	<!-- CEF HTML Files -->
+	<file src="Client/CEF/speedometer.html" />
+
 
   <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
   
