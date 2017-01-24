@@ -10,31 +10,18 @@ namespace fivenk_rp
 {
     public class General : Script
     {
-        [Command("h", "Show a list of available commands")]
+        [Command("h", "Show a list of available commands", Alias="help")]
         public void hCmd(Client sender)
         {
             listAllCommands(sender);
         }
 
-        [Command("help", "Show a list of available commands")]
-        public void helpCmd(Client sender)
-        {
-            listAllCommands(sender);
-        }
-
-        [Command("cmd", "Show a list of available commands")]
+        [Command("cmd", "Show a list of available commands", Alias="commands")]
         public void cmdCmd(Client sender)
         {
             listAllCommands(sender);
         }
 
-        [Command("commands", "Show a list of available commands")]
-        public void commandsCmd(Client sender)
-        {
-            listAllCommands(sender);
-        }
-
-        
         [Command(SensitiveInfo = true)]
         public void Login(Client sender, string password)
         {
