@@ -30,6 +30,8 @@ API.onUpdate.connect(function() {
             // m/s to km/h
             speedometerBrowser.call("updateSpeed", speed * 3.6);
 
+            // We only hide/show the speedometer if the player left/entered
+            // a vehicle since the last frame rather than every frame
             if (!wasInVehicle) {
                 API.setCefBrowserHeadless(speedometerBrowser, false);
             }
