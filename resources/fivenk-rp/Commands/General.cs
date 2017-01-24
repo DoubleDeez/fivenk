@@ -58,7 +58,7 @@ namespace fivenk_rp
             API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You do not have permission to run this command!");
         }
 
-        public void listAllCommands(Client sender)
+        private void listAllCommands(Client sender)
         {
             List<string> commands = new List<string>();
 
