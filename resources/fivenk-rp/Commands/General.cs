@@ -13,54 +13,45 @@ namespace fivenk_rp
         [Command("h", "Show a list of available commands")]
         public void hCmd(Client sender)
         {
-            if (ClientHelper.DoesClientHavePermission(sender, Acl.Default))
-            {
-                listAllCommands(sender);
-                return;
-            }
-
-            API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You do not have permission to run this command!");
+            listAllCommands(sender);
         }
 
         [Command("help", "Show a list of available commands")]
         public void helpCmd(Client sender)
         {
-            if (ClientHelper.DoesClientHavePermission(sender, Acl.Default))
-            {
-                listAllCommands(sender);
-                return;
-            }
-
-            API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You do not have permission to run this command!");
+            listAllCommands(sender);
         }
 
         [Command("cmd", "Show a list of available commands")]
         public void cmdCmd(Client sender)
         {
-            if (ClientHelper.DoesClientHavePermission(sender, Acl.Default))
-            {
-                listAllCommands(sender);
-                return;
-            }
-
-            API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You do not have permission to run this command!");
+            listAllCommands(sender);
         }
 
         [Command("commands", "Show a list of available commands")]
         public void commandsCmd(Client sender)
         {
-            if (ClientHelper.DoesClientHavePermission(sender, Acl.Default))
-            {
-                listAllCommands(sender);
-                return;
-            }
+            listAllCommands(sender);
+        }
 
-            API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You do not have permission to run this command!");
+        
+        [Command(SensitiveInfo = true)]
+        public void Login(Client sender, string password)
+        {
+            API.call("LoginManager", "Login", sender, password);
+        }
+
+        [Command(SensitiveInfo = true)]
+        public void Register(Client sender, string password)
+        {
+            API.call("LoginManager", "Register", sender, password);
         }
 
         private void listAllCommands(Client sender)
         {
             List<string> commands = new List<string>();
+            //Player player = API.shared.getEntityData(sender, "Player");
+            //Acl senderAcl = player == null ? Acl.NotLoggedIn : player.AclLevel;
 
             Assembly assembly = typeof(General).Assembly;
             IEnumerable<MethodInfo> commandMethods = from type in assembly.GetTypes()
@@ -69,14 +60,20 @@ namespace fivenk_rp
                                                      select method;
             foreach (var method in commandMethods)
             {
-                CommandAttribute commandAttribute = method.GetCustomAttribute<CommandAttribute>(false);
-                if (commandAttribute.CommandString == null)
+                Acl methodAcl = CommandHelper.GetMethodAcl(method);
+                //AclAttribute aclAttribute = method.GetCustomAttribute<AclAttribute>(false);
+                //Acl methodAcl = aclAttribute == null ? Acl.NotLoggedIn : aclAttribute.acl;
+                if(ClientHelper.DoesClientHavePermission(sender, methodAcl))
                 {
-                    commands.Add("/" + method.Name.ToLower());
-                }
-                else
-                {
-                    commands.Add("/" + commandAttribute.CommandString);
+                    CommandAttribute commandAttribute = method.GetCustomAttribute<CommandAttribute>(false);
+                    if (commandAttribute.CommandString == null)
+                    {
+                        commands.Add("/" + method.Name.ToLower());
+                    }
+                    else
+                    {
+                        commands.Add("/" + commandAttribute.CommandString);
+                    }
                 }
             }
 

@@ -18,7 +18,8 @@ namespace fivenk_rp
         public static bool DoesClientHavePermission(Client client, Acl AclLevel)
         {
             Player player = ClientHelper.GetPlayerFromClient(client);
-            return (player != null && player.AclLevel >= AclLevel);
+            Acl playerAcl = player == null ? Acl.NotLoggedIn : player.AclLevel;
+            return (playerAcl >= AclLevel);
         }
     }
 }

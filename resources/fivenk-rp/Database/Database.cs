@@ -37,7 +37,8 @@ namespace fivenk_rp
 
         public static bool IsPlayerLoggedIn(Client player)
         {
-            return API.shared.getEntityData(player, "Player").AclLevel != Acl.NotLoggedIn;
+            Player playerFromDB = API.shared.getEntityData(player, "Player");
+            return (playerFromDB != null && playerFromDB.AclLevel != Acl.NotLoggedIn);
         }
 
         public static bool CreatePlayerAccount(Client player, string password, string salt)

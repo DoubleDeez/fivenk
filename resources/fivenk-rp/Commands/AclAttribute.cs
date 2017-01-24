@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace fivenk_rp.fivenk_rp.Commands
+namespace fivenk_rp
 {
     class AclAttribute : Attribute
     {
