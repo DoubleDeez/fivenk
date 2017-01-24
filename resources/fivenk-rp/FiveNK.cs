@@ -54,6 +54,7 @@ namespace fivenk_rp
         public void WhisperPlayer(Client sender, Client target, string message)
         {
             API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
             API.setEntityData(target, "ReplyTo", sender);
         }
 
@@ -67,6 +68,7 @@ namespace fivenk_rp
                 return;
             }
             API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
             API.setEntityData(target, "ReplyTo", sender);
         }
     }
