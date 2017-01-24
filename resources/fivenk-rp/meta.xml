@@ -1,38 +1,11 @@
-﻿<meta>
+<meta>
 	<info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="false" />
 	<!-- Config Files -->
 	<config src="vehicles.xml" type="server" />
 
 	<!-- Enable debugging -->
-	<script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-
-	<!-- Main Server C# Files -->
-	<script src="FiveNK.cs" type="server" lang="csharp" />
-
-	<!-- Account Server C# Files -->
-	<script src="Accounts/LoginManager.cs" type="server" lang="csharp" />
-
-	<!-- Database Server C# Files -->
-	<script src="Database/Database.cs" type="server" lang="csharp" />
-	<script src="Database/Models/Jobs.cs" type="server" lang="csharp" />
-	<script src="Database/Models/Player.cs" type="server" lang="csharp" />
-
-	<!-- Command Server C# Files -->
-  <script src="Commands/Acl.cs" type="server" lang="csharp" />
-  <script src="Commands/AclAttribute.cs" type="server" lang="csharp" />
-	<script src="Commands/Admin.cs" type="server" lang="csharp" />
-	<script src="Commands/Debug.cs" type="server" lang="csharp" />
-	<script src="Commands/General.cs" type="server" lang="csharp" />
-
-	<!-- Helper Server C# Files -->
-	<script src="Helpers/AsyncHelper.cs" type="server" lang="csharp" />
-	<script src="Helpers/ClientHelper.cs" type="server" lang="csharp" />
-	<script src="Helpers/CommandHelper.cs" type="server" lang="csharp" />
-
-	<!-- SpawnerServer C# Files -->
-	<script src="Spawners/SpawnManager.cs" type="server" lang="csharp" />
-	<script src="Spawners/VehicleSpawner.cs" type="server" lang="csharp" />
-
+	<!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
+	<script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
 
 	<!-- Client JS Files -->
 	<script src="Client/MoneyDisplay.js" type="client" lang="javascript" />

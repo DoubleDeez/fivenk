@@ -13,8 +13,9 @@ namespace fivenk_rp
         public FiveNK()
         {
             API.onResourceStart += OnResourceStartHandler;
-            API.onPlayerConnected += onPlayerConnectHandler;
-            API.onPlayerDisconnected += onPlayerDisconnectHandler;
+            API.onPlayerConnected += OnPlayerConnectHandler;
+            API.onPlayerDisconnected += OnPlayerDisconnectHandler;
+            API.onPlayerRespawn += OnPlayerRespawnHandler;
         }
 
         public void OnResourceStartHandler()
@@ -22,14 +23,53 @@ namespace fivenk_rp
             API.setGamemodeName("FiveNK-RP");
         }
 
-        public void onPlayerConnectHandler(Client player)
+        public void OnPlayerConnectHandler(Client player)
         {
             API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~joined.");
         }
 
-        public void onPlayerDisconnectHandler(Client player, string reason)
+        public void OnPlayerDisconnectHandler(Client player, string reason)
         {
             API.sendNotificationToAll("~b~~h~" + player.name + "~h~ ~w~quit. (" + reason + ")");
+        }
+
+        public void OnPlayerRespawnHandler(Client player)
+        {
+            API.setEntityInvincible(player.handle, true);
+            AsyncHelpers.Delay(10000, () =>
+            {
+                API.setEntityInvincible(player.handle, false);
+            });
+        }
+
+        [Command("god")]
+        public void ToggleGodMode(Client sender)
+        {
+            bool isEnabled = !API.getEntityInvincible(sender);
+            API.setEntityInvincible(sender, isEnabled);
+            API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
+        }
+
+        [Command("whisper", Alias = "w", GreedyArg = true)]
+        public void WhisperPlayer(Client sender, Client target, string message)
+        {
+            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
+            API.setEntityData(target, "ReplyTo", sender);
+        }
+
+        [Command("reply", Alias = "r", GreedyArg = true)]
+        public void ReplyPlayer(Client sender, string message)
+        {
+            Client target = API.getEntityData(sender, "ReplyTo");
+            if (target == null)
+            {
+                API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ You have no one to reply to.");
+                return;
+            }
+            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
+            API.setEntityData(target, "ReplyTo", sender);
         }
     }
 }
