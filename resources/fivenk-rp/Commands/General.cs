@@ -47,6 +47,48 @@ namespace fivenk_rp
             API.call("LoginManager", "Register", sender, password);
         }
 
+        [Command("whisper", Alias = "w", GreedyArg = true)]
+        [Acl(Acl.Default)]
+        public void WhisperPlayer(Client sender, Client target, string message)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+                API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
+                API.setEntityData(target, "ReplyTo", sender);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
+        [Command("reply", Alias = "r", GreedyArg = true)]
+        [Acl(Acl.Default)]
+        public void ReplyPlayer(Client sender, string message)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                Client target = API.getEntityData(sender, "ReplyTo");
+                if (target == null)
+                {
+                    API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ You have no one to reply to.");
+                    return;
+                }
+                API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
+                API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
+                API.setEntityData(target, "ReplyTo", sender);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
         private void listAllCommands(Client sender)
         {
             List<string> commands = new List<string>();

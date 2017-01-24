@@ -115,5 +115,23 @@ namespace fivenk_rp
 
             CommandHelper.ClientDoesNotHavePermission(sender);
         }
+
+        [Command("god")]
+        [Acl(Acl.Admin)]
+        public void ToggleGodMode(Client sender)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                bool isEnabled = !API.getEntityInvincible(sender);
+                API.setEntityInvincible(sender, isEnabled);
+                API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
     }
 }

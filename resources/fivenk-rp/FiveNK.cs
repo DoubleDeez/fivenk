@@ -41,35 +41,5 @@ namespace fivenk_rp
                 API.setEntityInvincible(player.handle, false);
             });
         }
-
-        [Command("god")]
-        public void ToggleGodMode(Client sender)
-        {
-            bool isEnabled = !API.getEntityInvincible(sender);
-            API.setEntityInvincible(sender, isEnabled);
-            API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
-        }
-
-        [Command("whisper", Alias = "w", GreedyArg = true)]
-        public void WhisperPlayer(Client sender, Client target, string message)
-        {
-            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
-            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
-            API.setEntityData(target, "ReplyTo", sender);
-        }
-
-        [Command("reply", Alias = "r", GreedyArg = true)]
-        public void ReplyPlayer(Client sender, string message)
-        {
-            Client target = API.getEntityData(sender, "ReplyTo");
-            if (target == null)
-            {
-                API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ You have no one to reply to.");
-                return;
-            }
-            API.sendChatMessageToPlayer(target, "~g~" + API.getPlayerName(sender) + " whipsers: ~w~" + message);
-            API.sendChatMessageToPlayer(sender, "~g~Whispering to " + API.getPlayerName(target) + ": ~w~" + message);
-            API.setEntityData(target, "ReplyTo", sender);
-        }
     }
 }
