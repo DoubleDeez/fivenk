@@ -109,11 +109,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="fivenk-rp\vehicles.xml" />
-    <Content Include="speedometer\d3.v2.js" />
-    <Content Include="speedometer\gauge.js" />
-    <Content Include="speedometer\main.html" />
-    <Content Include="speedometer\meta.xml" />
-    <Content Include="speedometer\speedometer.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

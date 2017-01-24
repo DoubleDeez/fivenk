@@ -18,9 +18,9 @@
   <onfoot_lagcomp>true</onfoot_lagcomp>
   <refresh_rate>60</refresh_rate>
   <resource src="fivenk-rp" />
-  <resource src="speedometer" />
   <announce_lan>true</announce_lan>
   <upnp>false</upnp>
   <fqdn></fqdn>
   <conntimeout>true</conntimeout>
+  <allowcefdevtool>false</allowcefdevtool>
 </config>
