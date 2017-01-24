@@ -1,4 +1,4 @@
-﻿<meta>
+<meta>
 	<info name="FiveNK Roleplay" description="" author="DoubleDeez" version="1.0" shadowcopy="false" />
 	<!-- Config Files -->
 	<config src="vehicles.xml" type="server" />
@@ -14,6 +14,8 @@
 	<!-- CEF Files -->
 	<!-- None yet -->
 
+  <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
+  
 	<!-- C# References -->
 	<assembly ref="SQLite-net.dll" />
 	<assembly ref="SQLitePCLRaw.batteries_green.dll" />

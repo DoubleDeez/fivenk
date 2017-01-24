@@ -31,7 +31,6 @@ namespace fivenk_rp
             }
         }
 
-        [Command(SensitiveInfo = true)]
         public void Login(Client sender, string password)
         {
             if (Database.IsPlayerLoggedIn(sender))
@@ -80,7 +79,6 @@ namespace fivenk_rp
             }
         }
 
-        [Command(SensitiveInfo = true)]
         public void Register(Client sender, string password)
         {
             if (Database.IsPlayerLoggedIn(sender))

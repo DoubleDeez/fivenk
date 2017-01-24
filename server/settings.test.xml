@@ -8,7 +8,7 @@
   <announce>true</announce>
   <password></password>
   <masterserver>http://master.gtanet.work/</masterserver>
-  <acl_enabled>true</acl_enabled>
+  <acl_enabled>false</acl_enabled>
   <loglevel>3</loglevel>
   <log>true</log>
   <global_streaming_range>175</global_streaming_range>

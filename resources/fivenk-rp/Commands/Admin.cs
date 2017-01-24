@@ -6,6 +6,7 @@ using System.Text;
 using GTANetworkServer;
 using GTANetworkShared;
 using System.Threading;
+using System.Reflection;
 
 namespace fivenk_rp
 {
@@ -15,102 +16,122 @@ namespace fivenk_rp
         {
         }
 
-        [Command(ACLRequired = true)]
+        [Command()]
+        [Acl(Acl.Admin)]
         public void SetTime(Client sender, int hours, int minutes)
         {
-            API.setTime(hours, minutes);
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.setTime(hours, minutes);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command(ACLRequired = true)]
+        [Command()]
+        [Acl(Acl.Admin)]
         public void SetWeather(Client sender, int newWeather)
         {
-            API.setWeather(newWeather);
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.setWeather(newWeather);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command(ACLRequired = true)]
-        public void Logout(Client sender)
-        {
-            API.logoutPlayer(sender);
-        }
-
-        [Command(ACLRequired = true)]
-        public void Start(Client sender, string resource)
-        {
-            if (!API.doesResourceExist(resource))
-            {
-                API.sendChatMessageToPlayer(sender, "~r~No such resource found: \"" + resource + "\"");
-            }
-            else if (API.isResourceRunning(resource))
-            {
-                API.sendChatMessageToPlayer(sender, "~r~Resource \"" + resource + "\" is already running!");
-            }
-            else
-            {
-                API.startResource(resource);
-                API.sendChatMessageToPlayer(sender, "~g~Started resource \"" + resource + "\"");
-            }
-        }
-
-        [Command(ACLRequired = true)]
-        public void Stop(Client sender, string resource)
-        {
-            if (!API.doesResourceExist(resource))
-            {
-                API.sendChatMessageToPlayer(sender, "~r~No such resource found: \"" + resource + "\"");
-            }
-            else if (!API.isResourceRunning(resource))
-            {
-                API.sendChatMessageToPlayer(sender, "~r~Resource \"" + resource + "\" is not running!");
-            }
-            else
-            {
-                API.stopResource(resource);
-                API.sendChatMessageToPlayer(sender, "~g~Stopped resource \"" + resource + "\"");
-            }
-        }
-
-        [Command(ACLRequired = true)]
-        public void Restart(Client sender, string resource)
-        {
-            if (API.doesResourceExist(resource))
-            {
-                API.stopResource(resource);
-                API.startResource(resource);
-
-                API.sendChatMessageToPlayer(sender, "~g~Restarted resource \"" + resource + "\"");
-            }
-            else
-            {
-                API.sendChatMessageToPlayer(sender, "~r~No such resource found: \"" + resource + "\"");
-            }
-        }
-
-        [Command(GreedyArg = true, ACLRequired = true)]
+        [Command(GreedyArg = true)]
+        [Acl(Acl.Moderator)]
         public void Kick(Client sender, Client target, string reason)
         {
-            API.kickPlayer(target, reason);
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.kickPlayer(target, reason);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command(ACLRequired = true)]
+        [Command()]
+        [Acl(Acl.Moderator)]
         public void Kill(Client sender, Client target)
         {
-            API.setPlayerHealth(target, -1);
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.setPlayerHealth(target, -1);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command("tp", ACLRequired = true)]
+        [Command("tp")]
+        [Acl(Acl.Moderator)]
         public void Teleport(Client sender, Client target)
         {
-            var pos = API.getEntityPosition(sender.handle);
-            API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
-            API.setEntityPosition(sender.handle, API.getEntityPosition(target.handle));
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                var pos = API.getEntityPosition(sender.handle);
+                API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
+                API.setEntityPosition(sender.handle, API.getEntityPosition(target.handle));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command("tpto", ACLRequired = true)]
+        [Command("tpto")]
+        [Acl(Acl.Moderator)]
         public void TeleportTo(Client sender, Client target)
         {
-            var pos = API.getEntityPosition(target.handle);
-            API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
-            API.setEntityPosition(target.handle, API.getEntityPosition(sender.handle));
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                var pos = API.getEntityPosition(target.handle);
+                API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
+                API.setEntityPosition(target.handle, API.getEntityPosition(sender.handle));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
+        [Command("god")]
+        [Acl(Acl.Admin)]
+        public void ToggleGodMode(Client sender)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                bool isEnabled = !API.getEntityInvincible(sender);
+                API.setEntityInvincible(sender, isEnabled);
+                API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
         }
     }
 }

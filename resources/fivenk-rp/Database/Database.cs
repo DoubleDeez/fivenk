@@ -8,7 +8,6 @@ namespace fivenk_rp
     public static class Database
     {
         private const string FIVENK_DATABASE = "fnk_db.sqlite";
-        private const string LOGGED_IN_KEY = "LOGGED_IN";
         private const int DEFAULT_LEVEL = 1;
         private const int DEFAULT_CASH = 1000;
 
@@ -38,7 +37,8 @@ namespace fivenk_rp
 
         public static bool IsPlayerLoggedIn(Client player)
         {
-            return API.shared.getEntityData(player, LOGGED_IN_KEY) == true;
+            Player playerFromDB = API.shared.getEntityData(player, "Player");
+            return (playerFromDB != null && playerFromDB.AclLevel != Acl.NotLoggedIn);
         }
 
         public static bool CreatePlayerAccount(Client player, string password, string salt)
@@ -88,7 +88,6 @@ namespace fivenk_rp
             }
             PlayerFromDB.TimeLastLoggedIn = DateTime.UtcNow;
             API.shared.setEntityData(player, "Player", PlayerFromDB);
-            API.shared.setEntityData(player, LOGGED_IN_KEY, true);
             return true;
         }
 

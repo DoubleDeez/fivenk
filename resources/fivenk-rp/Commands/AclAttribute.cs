@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace fivenk_rp
 {
-    public enum Acl
+    class AclAttribute : Attribute
     {
-        NotLoggedIn = -1,
-        Default,
-        Moderator,
-        Admin
+        public readonly Acl acl;
+
+        public AclAttribute(Acl acl)
+        {
+            this.acl = acl;
+        }
     }
 }
