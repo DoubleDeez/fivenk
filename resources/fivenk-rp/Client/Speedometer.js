@@ -20,8 +20,6 @@ API.onUpdate.connect(function() {
     if (speedometerBrowser != null) {
         if (isPlayerInVehicle) {
             var car = API.getPlayerVehicle(player);
-            var health = API.getVehicleHealth(car);
-            var rpm = API.getVehicleRPM(car);
             var velocity = API.getEntityVelocity(car);
             var speed = Math.sqrt(
                 velocity.X * velocity.X +

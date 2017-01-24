@@ -1,41 +1,41 @@
 ﻿<meta>
-	<info name="FiveNK Roleplay" description="A light roleplay server that is under development." author="DoubleDeez" version="1.0" shadowcopy="false" />
-	<!-- Config Files -->
-	<config src="vehicles.xml" type="server" />
+    <info name="FiveNK Roleplay" description="A light roleplay server that is under development." author="DoubleDeez" version="1.0" shadowcopy="false" />
+    <!-- Config Files -->
+    <config src="vehicles.xml" type="server" />
 
-	<!-- Enable debugging -->
-	<!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
-	<script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
-
-
-	<!-- Client JS Files -->
-	<script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
-	<script src="Client/SkinSelector.js" type="client" lang="javascript" />
-	<script src="Client/Speedometer.js" type="client" lang="javascript" />
+    <!-- Enable debugging -->
+    <!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
+    <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
 
 
-	<!-- CEF Font Files -->
-	<file src="Client/CEF/Fonts/Cornerstone.ttf" />
-
-	<!-- CEF CSS Files -->
-	<file src="Client/CEF/CSS/speedometer.css" />
-
-	<!-- CEF HTML Files -->
-	<file src="Client/CEF/speedometer.html" />
+    <!-- Client JS Files -->
+    <script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
+    <script src="Client/SkinSelector.js" type="client" lang="javascript" />
+    <script src="Client/Speedometer.js" type="client" lang="javascript" />
 
 
-  <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-  
-	<!-- C# References -->
-	<assembly ref="SQLite-net.dll" />
-	<assembly ref="SQLitePCLRaw.batteries_green.dll" />
-	<assembly ref="SQLitePCLRaw.batteries_v2.dll" />
-	<assembly ref="SQLitePCLRaw.core.dll" />
-	<assembly ref="SQLitePCLRaw.provider.e_sqlite3.dll" />
-	<assembly ref="System.Data.dll"/>
-	<assembly ref="System.Data.Common.dll" />
-	<assembly ref="System.Linq.Expressions.dll"/>
-	<assembly ref="System.Runtime.dll" />
-	<assembly ref="System.Xml.dll" />
-	<assembly ref="System.Xml.Serialization.dll" />
+    <!-- CEF Font Files -->
+    <file src="Client/CEF/Fonts/Cornerstone.ttf" />
+
+    <!-- CEF CSS Files -->
+    <file src="Client/CEF/CSS/speedometer.css" />
+
+    <!-- CEF HTML Files -->
+    <file src="Client/CEF/speedometer.html" />
+
+
+    <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
+
+    <!-- C# References -->
+    <assembly ref="SQLite-net.dll" />
+    <assembly ref="SQLitePCLRaw.batteries_green.dll" />
+    <assembly ref="SQLitePCLRaw.batteries_v2.dll" />
+    <assembly ref="SQLitePCLRaw.core.dll" />
+    <assembly ref="SQLitePCLRaw.provider.e_sqlite3.dll" />
+    <assembly ref="System.Data.dll"/>
+    <assembly ref="System.Data.Common.dll" />
+    <assembly ref="System.Linq.Expressions.dll"/>
+    <assembly ref="System.Runtime.dll" />
+    <assembly ref="System.Xml.dll" />
+    <assembly ref="System.Xml.Serialization.dll" />
 </meta>
