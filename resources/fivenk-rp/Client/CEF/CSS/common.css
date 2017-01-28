@@ -1,0 +1,18 @@
+@font-face {
+	font-family: Cornerstone;
+	src: local("Cornerstone"), url(../Fonts/Cornerstone.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: OpenSans;
+	font-weight: 300;
+	font-style: normal;
+	src: local("Open Sans"), url(../Fonts/OpenSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: OpenSans;
+	font-weight: 700;
+	font-style: normal;
+	src: local("Open Sans"), url(../Fonts/OpenSans-Bold.ttf) format("truetype");
+}
