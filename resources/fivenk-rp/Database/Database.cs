@@ -5,14 +5,27 @@ using System;
 
 namespace fivenk_rp
 {
+    /// <summary>
+    /// Database is a singleton class. Its purpose is to setup
+    /// the schema for the SQLite DB and provide an instance
+    /// to the SQLiteConnection member via Database.Instance().
+    /// 
+    /// Models can use the the SQLiteConnection instance
+    /// to abstract the database away. Anything that is not a model
+    /// should not use the Database class directly.
+    /// 
+    /// Models that need to be saved and updated should be added
+    /// to the Database.CreateTables method.
+    /// </summary>
     public static class Database
     {
         private const string FIVENK_DATABASE = "fnk_db.sqlite";
-        private const int DEFAULT_LEVEL = 1;
-        private const int DEFAULT_CASH = 1000;
 
         private static SQLiteConnection DATABASE;
 
+        /// <summary>
+        /// Set our singleton and setup the schema
+        /// </summary>
         public static void Init()
         {
             DATABASE = new SQLiteConnection(FIVENK_DATABASE);
@@ -20,85 +33,33 @@ namespace fivenk_rp
             CreateTables();
         }
 
+        /// <summary>
+        /// This method returns the singleton instance, only call from a model.
+        /// </summary>
+        /// <returns>An instance to the SQLiteConnection. You can assume this is never null.</returns>
+        public static SQLiteConnection Instance()
+        {
+            if (DATABASE == null)
+            {
+                Init();
+            }
+            return DATABASE;
+        }
+
+        /// <summary>
+        /// Initialize or update the SQLite scheme to match our models
+        /// </summary>
         private static void CreateTables()
         {
             DATABASE.CreateTable<Player>();
         }
 
+        /// <summary>
+        /// Close the SQLite connection
+        /// </summary>
         public static void DeInit()
         {
             DATABASE.Close();
-        }
-
-        public static bool DoesAccountExist(string name)
-        {
-            return DATABASE.Table<Player>().Where(p => (p.SocialClubName == name)).Count() > 0;
-        }
-
-        public static bool IsPlayerLoggedIn(Client player)
-        {
-            Player playerFromDB = API.shared.getEntityData(player, "Player");
-            return (playerFromDB != null && playerFromDB.AclLevel != Acl.NotLoggedIn);
-        }
-
-        public static bool CreatePlayerAccount(Client player, string password, string salt)
-        {
-            if (DoesAccountExist(player.socialClubName))
-            {
-                return false;
-            }
-
-            int PlayerID = DATABASE.Insert(new Player()
-            {
-                SocialClubName = player.socialClubName,
-                Salt = salt,
-                Password = API.shared.getHashSHA256(password + salt),
-                AclLevel = Acl.Default,
-                Level = DEFAULT_LEVEL,
-                Cash = DEFAULT_CASH,
-                TimeRegistered = DateTime.UtcNow
-            });
-
-            // If playerID is below 0, it failed to create the player
-            if (PlayerID < 0)
-            {
-                API.shared.consoleOutput("Failed to create player in Database");
-                return false;
-            }
-            return true;
-        }
-
-        public static bool TryLoginPlayer(Client player, string password)
-        {
-            if (!DoesAccountExist(player.socialClubName))
-            {
-                return false;
-            }
-
-            Player PlayerFromDB = DATABASE.Table<Player>().Where(p => (p.SocialClubName == player.socialClubName)).First();
-            if (PlayerFromDB == null)
-            {
-                return false;
-            }
-
-            string HashedInputPassword = API.shared.getHashSHA256(password + PlayerFromDB.Salt);
-            if (!PlayerFromDB.Password.Equals(HashedInputPassword))
-            {
-                return false;
-            }
-            PlayerFromDB.TimeLastLoggedIn = DateTime.UtcNow;
-            API.shared.setEntityData(player, "Player", PlayerFromDB);
-            return true;
-        }
-
-        public static void SavePlayerAccount(Client player)
-        {
-            Player p = API.shared.getEntityData(player, "Player");
-            if (p == null)
-            {
-                return;
-            }
-            DATABASE.Update(p);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace fivenk_rp
 
         private bool CheckPlayerLoggedInWithError(Client player)
         {
-            if (!Database.IsPlayerLoggedIn(player))
+            if (!ClientHelper.IsPlayerLoggedIn(player))
             {
                 API.sendChatMessageToPlayer(player, "~r~ERROR: ~w~You must be logged in to do that! (~b~/login [password]~w~)");
                 return false;
