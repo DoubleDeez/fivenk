@@ -21,6 +21,9 @@ namespace fivenk_rp
         public void OnResourceStartHandler()
         {
             API.setGamemodeName("FiveNK-RP");
+
+            // Load IPLs
+            API.requestIpl("apa_v_mp_h_01_a");
         }
 
         public void OnPlayerConnectHandler(Client player)
