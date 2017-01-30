@@ -93,6 +93,7 @@
     <Compile Include="fivenk-rp\Commands\General.cs" />
     <Compile Include="fivenk-rp\Database\Database.cs" />
     <Compile Include="fivenk-rp\Database\Models\Jobs.cs" />
+    <Compile Include="fivenk-rp\Database\Models\Model.cs" />
     <Compile Include="fivenk-rp\Database\Models\Player.cs" />
     <Compile Include="fivenk-rp\FiveNK.cs" />
     <Compile Include="fivenk-rp\Helpers\AsyncHelper.cs" />

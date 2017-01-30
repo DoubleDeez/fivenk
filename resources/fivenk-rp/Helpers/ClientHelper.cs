@@ -15,11 +15,27 @@ namespace fivenk_rp
             return API.shared.getEntityData(client, "Player");
         }
 
+        public static bool IsPlayerLoggedIn(Client client)
+        {
+            Player player = GetPlayerFromClient(client);
+            return (player != null && player.IsLoggedIn());
+        }
+
         public static bool DoesClientHavePermission(Client client, Acl AclLevel)
         {
             Player player = ClientHelper.GetPlayerFromClient(client);
             Acl playerAcl = player == null ? Acl.NotLoggedIn : player.AclLevel;
             return (playerAcl >= AclLevel);
+        }
+
+        public static void SavePlayer(Client client)
+        {
+            Player player = GetPlayerFromClient(client);
+            if (player == null)
+            {
+                return;
+            }
+            player.Save();
         }
     }
 }

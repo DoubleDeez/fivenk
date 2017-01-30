@@ -1,7 +1,6 @@
 ﻿using GTANetworkServer;
 using GTANetworkShared;
 using System;
-using System.Security.Cryptography;
 
 namespace fivenk_rp
 {
@@ -9,8 +8,6 @@ namespace fivenk_rp
     {
         public LoginManager()
         {
-            Database.Init();
-
             API.onPlayerConnected += OnPlayerConnected;
             API.onPlayerDisconnected += OnPlayerDisconnected;
             API.onResourceStop += OnResourceStop;
@@ -22,44 +19,20 @@ namespace fivenk_rp
             API.sendChatMessageToPlayer(player, "You are unable to move until you ~b~/register [password]~w~ and ~b~/login [password]~w~");
         }
 
-        public void OnPlayerDisconnected(Client player, string reason)
+        public void OnPlayerDisconnected(Client client, string reason)
         {
-            Database.SavePlayerAccount(player);
-            if (API.isAclEnabled())
-            {
-                API.logoutPlayer(player);
-            }
+            ClientHelper.SavePlayer(client);
         }
 
         public void Login(Client sender, string password)
         {
-            if (Database.IsPlayerLoggedIn(sender))
+            if (ClientHelper.IsPlayerLoggedIn(sender))
             {
                 API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You're already logged in!");
                 return;
             }
 
-            if (API.isAclEnabled())
-            {
-                var logResult = API.loginPlayer(sender, password);
-                switch (logResult)
-                {
-                    case 0:
-                    case 4:
-                    case 5:
-                    default:
-                        break;
-                    case 3:
-                    case 1:
-                        API.sendChatMessageToPlayer(sender, "~g~Login successful!~w~ Logged in as ~b~" + API.getPlayerAclGroup(sender) + "~w~.");
-                        break;
-                    case 2:
-                        API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ Wrong password!");
-                        break;
-                }
-            }
-
-            if (!Database.TryLoginPlayer(sender, password))
+            if (!Player.TryToLoginPlayer(sender, password))
             {
                 API.sendChatMessageToPlayer(sender, "~r~ERROR:~w~ Wrong password, or account doesn't exist!");
             }
@@ -69,36 +42,24 @@ namespace fivenk_rp
                 // Unfreeze the player
                 API.freezePlayer(sender, false);
                 API.call("SpawnManager", "CreateSkinSelection", sender);
-
-                Player senderPlayer = ClientHelper.GetPlayerFromClient(sender);
-                if (senderPlayer != null)
-                {
-                    int cash = senderPlayer.Cash;
-                    API.triggerClientEvent(sender, "update_cash_display", cash);
-                }
             }
         }
 
         public void Register(Client sender, string password)
         {
-            if (Database.IsPlayerLoggedIn(sender))
+            if (ClientHelper.IsPlayerLoggedIn(sender))
             {
                 API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~You're already logged in!");
                 return;
             }
 
-            if (Database.DoesAccountExist(sender.socialClubName))
+            if (Player.DoesPlayerExist(sender.socialClubName))
             {
                 API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~An account linked to your Social Club name already exists!");
                 return;
             }
 
-            // Generate a salt for the password
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            byte[] buffer = new byte[255];
-            rng.GetBytes(buffer);
-
-            if (Database.CreatePlayerAccount(sender, password, BitConverter.ToString(buffer)))
+            if (Player.TryToCreatePlayer(sender, password))
             {
                 API.sendChatMessageToPlayer(sender, "~g~Account created! ~w~Now log in with ~y~/login [password]");
             }
