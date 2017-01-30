@@ -66,7 +66,6 @@ namespace fivenk_rp
             }
             else
             {
-                onPlayerLogin(sender);
                 API.sendChatMessageToPlayer(sender, "~g~Logged in successfully! ~w~Use your ~b~Arrow Keys~w~ to select a job");
                 // Unfreeze the player
                 API.freezePlayer(sender, false);
@@ -120,11 +119,6 @@ namespace fivenk_rp
                 }
             }
             Database.DeInit();
-        }
-
-        private void onPlayerLogin(Client sender)
-        {
-            API.triggerClientEvent(sender, "create_blips");
         }
     }
 }
