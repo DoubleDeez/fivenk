@@ -23,13 +23,19 @@
     <file src="Client/CEF/CSS/bootstrap.min.css" />
     <file src="Client/CEF/CSS/common.css" />
     <file src="Client/CEF/CSS/jobpicker.css" />
+    <file src="Client/CEF/CSS/login.css" />
     <file src="Client/CEF/CSS/speedometer.css" />
 
     <!-- CEF JS Files -->
     <file src="Client/CEF/JS/jquery.min.js" />
 
+    <!-- CEF Image Files -->
+    <file src="Client/CEF/Images/logo.png" />
+    <file src="Client/CEF/Images/logo-square.png" />
+
     <!-- CEF HTML Files -->
     <file src="Client/CEF/jobpicker.html" />
+    <file src="Client/CEF/login.html" />
     <file src="Client/CEF/speedometer.html" />
 
 
