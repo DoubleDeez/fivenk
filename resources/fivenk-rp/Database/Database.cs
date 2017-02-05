@@ -59,6 +59,7 @@ namespace fivenk_rp
         /// </summary>
         public static void DeInit()
         {
+            if (DATABASE == null) return;
             DATABASE.Close();
         }
     }

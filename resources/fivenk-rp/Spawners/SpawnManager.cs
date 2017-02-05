@@ -47,9 +47,6 @@ namespace fivenk_rp
         public void SpawnCop(Client target)
         {
             API.setPlayerNametagColor(target, 55, 135, 240);
-
-            API.setEntityData(target, "Job", Jobs.Cop);
-
             API.setEntityPosition(target, _copSpawnpoint);
             API.removeAllPlayerWeapons(target);
 
@@ -67,7 +64,6 @@ namespace fivenk_rp
         public void SpawnCitizen(Client target)
         {
             API.resetPlayerNametagColor(target);
-            API.setEntityData(target, "Job", Jobs.Citizen);
             API.setEntityPosition(target, _crookSpawnpoint);
             API.removeAllPlayerWeapons(target);
             API.sendChatMessageToPlayer(target, "You are a citizen! Do various jobs to earn money and reputation!");
