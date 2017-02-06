@@ -24,7 +24,7 @@ function CreateBrowser() {
     if (CharacterBrowser != null) return;
     // Position in terms of 2560x1440 so normalize:
     var res = API.getScreenResolution();
-    var xPos = 1340 * (res.Width / 2560.0);
+    var xPos = 1520 * (res.Width / 2560.0);
     var yPos = 450 * (res.Height / 1440.0);
     var width = res.Width - xPos;
     var height = res.Height - yPos;

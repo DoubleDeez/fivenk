@@ -4,85 +4,30 @@ body {
 
 #menu-title {
 	font-family: Cornerstone;
-	font-size: 28px;
+	font-size: 41px;
 	font-weight: normal;
 	font-style: normal;
-	font-stretch: normal;
-	line-height: normal;
-	letter-spacing: 0.6px;
-	color: #ffffff;
-	text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.character-name {
-	font-family: Cornerstone;
-	font-size: 32px;
-	font-weight: normal;
-	font-style: normal;
-	letter-spacing: 1.5px;
-	text-align: center;
+	letter-spacing: 1.9px;
 	color: #ffffff;
 	text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-	background-color: transparent;
-	border: 2px solid white;
+	margin-bottom: -17px;
+	margin-left: 31px;
 }
 
-.job-info {
-	min-height: 260px;
-	border-radius: 0.5px;
+.margin-top-50 {
+	margin-top: 50px;
+}
+
+.padding-0-50 {
+	padding: 0 50px;
+}
+
+.character-creator-box {
+	border-radius: 1px;
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0), #000000);
-	font-family: OpenSans;
-	font-size: 18px;
-	font-weight: 300;
-	font-style: normal;
-	font-stretch: normal;
-	line-height: normal;
-	letter-spacing: 0.4px;
-	color: #ffffff;
-	padding: 5px;
-}
-
-.job-name {
-	background-color: transparent;
-	font-family: OpenSans;
-	font-size: 18px;
-	font-weight: 300;
-	font-style: normal;
-	font-stretch: normal;
-	line-height: normal;
-	letter-spacing: 0.8px;
-	color: #ffffff;
-	padding-left: 5px;
-	display: block;
-	border: 0;
-	border-radius: 0;
-}
-
-.job-name-selected {
-	background-image: linear-gradient(to left, rgba(176, 40, 55, 0), #b22938);
-	cursor: pointer;
-	font-weight: 700;
-}
-
-.job-name:active {
-	outline: none;
-}
-
-.job-name:focus {
-	outline: none;
-}
-
-.job-name:hover {
-	background-image: linear-gradient(to left, rgba(176, 40, 55, 0), #b22938);
-	cursor: pointer;
-	font-weight: 700;
-}
-
-.red-stripe {
-	background-image: linear-gradient(to top, #b42938, #b42938);
-	background-size: auto 3px;
-	background-repeat: repeat-y;
-	padding-left: 5px;
+	width: 600px;
+	margin-top: 0;
+	padding: 30px;
 }
 
 .top-level-menu {
@@ -93,6 +38,130 @@ body {
 	font-stretch: normal;
 	line-height: normal;
 	letter-spacing: 1px;
+	color: #ffffff;
+}
+
+.character-name {
+	width: 280px;
+	height: 32px;
+	border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.12);
+	border: solid 1px #333333;
+	padding-left: 10px;
+	font-family: OpenSans;
+	font-size: 18px;
+	font-weight: 300;
+	color: #ffffff;
+}
+
+.character-name:focus {
+	box-shadow: 0 0 13px 0 #ff4848;
+	border: solid 1px #ff4848;
+	outline: none;
+}
+
+.selector-btn {
+	border: 0;
+	color: white;
+	background-color: transparent;
+	transition: 0.3s;
+	font-size: 26px;
+}
+
+.selector-btn:active {
+	outline: none !important;
+}
+
+.selector-btn:focus {
+	outline: none !important;
+}
+
+.selector-btn:hover {
+	color: #ff4848;
+	transition: 0.3s;
+}
+
+.selected-group {
+	font-family: OpenSans;
+	font-size: 18px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0.8px;
 	text-align: center;
 	color: #ffffff;
+}
+
+.group-description {
+	font-family: OpenSans;
+	font-size: 18px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 0.8px;
+	color: #d8d8d8;
+}
+
+#return {
+	background-color: transparent;
+	width: 140px;
+	height: 52px;
+	border-radius: 2px;
+	border: solid 1px #ffffff;
+	font-family: OpenSans;
+	font-size: 22px;
+	font-weight: 300;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 1px;
+	color: #ffffff;
+	transition: 0.8s;
+	margin-right: 15px;
+}
+
+#return:active {
+	outline: none !important;
+}
+
+#return:focus {
+	outline: none !important;
+}
+
+#return:hover {
+	background-color: #ffffff;
+	color: #3d3d3d;
+	transition: 0.8s;
+}
+
+#finish {
+	background-color: transparent;
+	width: 140px;
+	height: 52px;
+	border-radius: 4px;
+	border: solid 2px #ff4848;
+	font-family: OpenSans;
+	font-size: 22px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: 1px;
+	color: #ffffff;
+	transition: 0.8s;
+}
+
+#finish:active {
+	outline: none !important;
+}
+
+#finish:focus {
+	outline: none !important;
+}
+
+#finish:hover {
+	background-color: #ff4848;
+	transition: 0.8s;
 }

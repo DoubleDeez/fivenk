@@ -18,6 +18,7 @@
 
     <!-- CEF Font Files -->
     <file src="Client/CEF/Fonts/Cornerstone.ttf" />
+    <file src="Client/CEF/Fonts/glyphicons-halflings-regular.ttf" />
     <file src="Client/CEF/Fonts/OpenSans-Regular.ttf" />
     <file src="Client/CEF/Fonts/OpenSans-Bold.ttf" />
 
