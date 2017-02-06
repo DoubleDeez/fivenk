@@ -9,6 +9,7 @@ namespace fivenk_rp
         public LoginManager()
         {
             API.onPlayerConnected += OnPlayerConnected;
+            API.onPlayerConnected += Apartment.onPlayerConnected;
             API.onPlayerDisconnected += OnPlayerDisconnected;
             API.onResourceStop += OnResourceStop;
         }
