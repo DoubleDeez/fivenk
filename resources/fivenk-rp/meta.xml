@@ -5,10 +5,11 @@
 
     <!-- Enable debugging -->
     <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-		<!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
+	<!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
 
 
     <!-- Client JS Files -->
+    <script src="Client/Login.js" type="client" lang="javascript" />
     <script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
     <script src="Client/SkinSelector.js" type="client" lang="javascript" />
     <script src="Client/Speedometer.js" type="client" lang="javascript" />

@@ -13,6 +13,7 @@ namespace fivenk_rp
         public FiveNK()
         {
             API.onResourceStart += OnResourceStartHandler;
+            API.onResourceStop += OnResourceStopHandler;
             API.onPlayerConnected += OnPlayerConnectHandler;
             API.onPlayerDisconnected += OnPlayerDisconnectHandler;
             API.onPlayerRespawn += OnPlayerRespawnHandler;
@@ -21,6 +22,11 @@ namespace fivenk_rp
         public void OnResourceStartHandler()
         {
             API.setGamemodeName("FiveNK-RP");
+        }
+
+        public void OnResourceStopHandler()
+        {
+            Database.DeInit();
         }
 
         public void OnPlayerConnectHandler(Client player)
