@@ -52,6 +52,7 @@ namespace fivenk_rp
         private static void CreateTables()
         {
             DATABASE.CreateTable<Player>();
+            DATABASE.CreateTable<Character>();
         }
 
         /// <summary>

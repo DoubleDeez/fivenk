@@ -6,7 +6,6 @@ body {
 	display: inline-block;
 	border-radius: 8px;
 	background-color: rgba(23, 23, 23, 0.8);
-	box-shadow: 0 0 34px 0 rgba(0, 0, 0, 0.3);
 	padding: 60px 80px;
 }
 

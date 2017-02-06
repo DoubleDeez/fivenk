@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fivenk-rp\Accounts\CharacterManager.cs" />
     <Compile Include="fivenk-rp\Accounts\LoginManager.cs" />
     <Compile Include="fivenk-rp\Commands\AclAttribute.cs" />
     <Compile Include="fivenk-rp\Commands\Admin.cs" />

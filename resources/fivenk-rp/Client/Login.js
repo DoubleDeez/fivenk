@@ -1,7 +1,12 @@
 var loginBrowser = null;
+var Camera = null;
+var CameraPos = new Vector3(3513.92, 5118.72, 5.76); // Can try to find a cool view later
 
 API.onResourceStart.connect(function() {
     API.triggerServerEvent("player_connected");
+    Camera = API.createCamera(CameraPos, new Vector3());
+    API.pointCameraAtEntity(Camera, API.getLocalPlayer(), new Vector3());
+    API.setActiveCamera(Camera);
 });
 
 API.onServerEventTrigger.connect(function (eventName, args) {
@@ -33,6 +38,12 @@ API.onServerEventTrigger.connect(function (eventName, args) {
     }
 });
 
+API.onUpdate.connect(function ()
+{
+    if (loginBrowser == null) return;
+    API.disableAllControlsThisFrame();
+});
+
 function InitializeLogin() {
     CreateBrowser();
     API.showCursor(true);
@@ -43,6 +54,9 @@ function FinalizeLogin() {
     API.destroyCefBrowser(loginBrowser);
     API.showCursor(false);
     API.setCanOpenChat(true);
+    API.setActiveCamera(null);
+    Camera = null;
+    loginBrowser = null;
 }
 
 function OnDisplayLoginEvent() {

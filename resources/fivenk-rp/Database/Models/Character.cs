@@ -3,7 +3,7 @@ using System;
 
 namespace fivenk_rp
 {
-    class Character
+    class Character : DatabaseModel
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -16,5 +16,11 @@ namespace fivenk_rp
         public int Experience { get; set; }
         public int Cash { get; set; }
         public float SalaryMultiplier { get; set; }
+
+
+        public static bool DoesPlayerHaveAnyCharacters(Player player)
+        {
+            return false;
+        }
     }
 }

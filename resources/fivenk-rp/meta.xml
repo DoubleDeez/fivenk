@@ -9,6 +9,7 @@
 
 
     <!-- Client JS Files -->
+    <script src="Client/CharacterCreator.js" type="client" lang="javascript" />
     <script src="Client/Login.js" type="client" lang="javascript" />
     <script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
     <script src="Client/SkinSelector.js" type="client" lang="javascript" />
@@ -17,13 +18,13 @@
 
     <!-- CEF Font Files -->
     <file src="Client/CEF/Fonts/Cornerstone.ttf" />
-     <file src="Client/CEF/Fonts/OpenSans-Regular.ttf" />
-     <file src="Client/CEF/Fonts/OpenSans-Bold.ttf" />
+    <file src="Client/CEF/Fonts/OpenSans-Regular.ttf" />
+    <file src="Client/CEF/Fonts/OpenSans-Bold.ttf" />
 
     <!-- CEF CSS Files -->
     <file src="Client/CEF/CSS/bootstrap.min.css" />
+    <file src="Client/CEF/CSS/charactercreator.css" />
     <file src="Client/CEF/CSS/common.css" />
-    <file src="Client/CEF/CSS/jobpicker.css" />
     <file src="Client/CEF/CSS/login.css" />
     <file src="Client/CEF/CSS/speedometer.css" />
 
@@ -35,7 +36,7 @@
     <file src="Client/CEF/Images/logo-square.png" />
 
     <!-- CEF HTML Files -->
-    <file src="Client/CEF/jobpicker.html" />
+    <file src="Client/CEF/charactercreator.html" />
     <file src="Client/CEF/login.html" />
     <file src="Client/CEF/speedometer.html" />
 

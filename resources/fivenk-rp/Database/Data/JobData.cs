@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GTANetworkServer.Constant;
 
 namespace fivenk_rp
 {
@@ -30,7 +31,8 @@ namespace fivenk_rp
                 BaseSalary = 200,
                 JobGroup = Group.Type.TheOfficials,
                 NextJobs = new Id[] { Id.TheOfficials_MallCop },
-                ExpToLevel = 100
+                ExpToLevel = 100,
+                NametagColor = new Color(0, 155, 255),
             };
             return MeterMaid;
         }
@@ -47,7 +49,8 @@ namespace fivenk_rp
                 BaseSalary = 400,
                 JobGroup = Group.Type.TheOfficials,
                 NextJobs = new Id[] { Id.TheOfficials_SecurityGuard },
-                ExpToLevel = 300
+                ExpToLevel = 300,
+                NametagColor = new Color(0, 155, 255),
             };
             return MallCop;
         }

@@ -31,7 +31,6 @@ namespace fivenk_rp
                 //           when they first connect.
                 return;
             }
-            API.freezePlayer(client, true);
             // Display login popup if no account exists, otherwise display register
             if (Player.DoesPlayerExist(client.socialClubName))
             {
@@ -63,9 +62,7 @@ namespace fivenk_rp
             else
             {
                 API.triggerClientEvent(sender, EVENT_SUCCESS_LOGIN);
-                // Unfreeze the player
-                API.freezePlayer(sender, false);
-                API.call("SpawnManager", "CreateSkinSelection", sender);
+                CharacterManager.SendPlayerToCharacterSelection(sender);
             }
         }
 

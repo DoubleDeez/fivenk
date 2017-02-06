@@ -1,5 +1,5 @@
 ﻿using System;
-using SQLite;
+using GTANetworkServer.Constant;
 
 namespace fivenk_rp
 {
@@ -12,5 +12,6 @@ namespace fivenk_rp
         public Group.Type JobGroup { get; set; }
         public JobData.Id[] NextJobs { get; set; }
         public int ExpToLevel { get; set; }
+        public Color NametagColor { get; set; }
     }
 }

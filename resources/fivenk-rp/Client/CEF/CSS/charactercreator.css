@@ -1,4 +1,8 @@
-#menu-title{
+body {
+	background-color: transparent;
+}
+
+#menu-title {
 	font-family: Cornerstone;
 	font-size: 28px;
 	font-weight: normal;
@@ -8,6 +12,19 @@
 	letter-spacing: 0.6px;
 	color: #ffffff;
 	text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.character-name {
+	font-family: Cornerstone;
+	font-size: 32px;
+	font-weight: normal;
+	font-style: normal;
+	letter-spacing: 1.5px;
+	text-align: center;
+	color: #ffffff;
+	text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	background-color: transparent;
+	border: 2px solid white;
 }
 
 .job-info {
@@ -26,6 +43,7 @@
 }
 
 .job-name {
+	background-color: transparent;
 	font-family: OpenSans;
 	font-size: 18px;
 	font-weight: 300;
@@ -35,6 +53,23 @@
 	letter-spacing: 0.8px;
 	color: #ffffff;
 	padding-left: 5px;
+	display: block;
+	border: 0;
+	border-radius: 0;
+}
+
+.job-name-selected {
+	background-image: linear-gradient(to left, rgba(176, 40, 55, 0), #b22938);
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.job-name:active {
+	outline: none;
+}
+
+.job-name:focus {
+	outline: none;
 }
 
 .job-name:hover {
@@ -45,9 +80,9 @@
 
 .red-stripe {
 	background-image: linear-gradient(to top, #b42938, #b42938);
-	background-size: 7px auto;
-	background-repeat: no-repeat;
-	padding-left: 7px;
+	background-size: auto 3px;
+	background-repeat: repeat-y;
+	padding-left: 5px;
 }
 
 .top-level-menu {
@@ -60,9 +95,4 @@
 	letter-spacing: 1px;
 	text-align: center;
 	color: #ffffff;
-}
-
-/* REMOVE THIS */
-body {
-	background-color: #121233;
 }
