@@ -81,7 +81,7 @@ body {
 	transition: 0.3s;
 }
 
-.selected-group {
+.selected {
 	font-family: OpenSans;
 	font-size: 18px;
 	font-weight: 300;

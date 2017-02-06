@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="CSS/common.css">
         <link rel="stylesheet" type="text/css" href="CSS/charactercreator.css">
-        <title>Character</title>
+        <title>Character Creator</title>
         <script src="JS/jquery.min.js"></script>
     </head>
     <body>
@@ -14,28 +14,28 @@
             <div class="row">
                 <div class="col-xs-2 top-level-menu">Name</div>
                 <div class="col-xs-10 text-center padding-0-50">
-                    <input class="character-name" placeholder="Character Name">
+                    <input id="character-name" class="character-name" placeholder="Character Name">
                 </div>
             </div>
             <div class="row margin-top-50">
                 <div class="col-xs-2 top-level-menu">Group</div>
                 <div class="col-xs-10 text-center padding-0-50">
-                    <button class="glyphicon glyphicon-triangle-left selector-btn pull-left"></button>
-                    <span class="selected-group">The Officials</span>
-                    <button class="glyphicon glyphicon-triangle-right selector-btn pull-right"></button>
+                    <button id="prev-group" class="glyphicon glyphicon-triangle-left selector-btn pull-left"></button>
+                    <span id="selected-group" class="selected">The Officials</span>
+                    <button id="next-group" class="glyphicon glyphicon-triangle-right selector-btn pull-right"></button>
                 </div>
             </div>
             <div class="row margin-top-50">
-                <div class="col-xs-offset-2 col-xs-10 text-center group-description padding-0-50">
-                Keep the town running and the baddies in check.
+                <div id="selected-group-description" class="col-xs-offset-2 col-xs-10 text-center group-description padding-0-50">
+                This group is all about making sure the law is followed.
                 </div>
             </div>
             <div class="row margin-top-50">
                 <div class="col-xs-2 top-level-menu">Skin</div>
                 <div class="col-xs-10 text-center padding-0-50">
-                    <button class="glyphicon glyphicon-triangle-left selector-btn pull-left"></button>
-                    <span class="selected-group">Police Officer 1</span>
-                    <button class="glyphicon glyphicon-triangle-right selector-btn pull-right"></button>
+                    <button id="prev-skin" class="glyphicon glyphicon-triangle-left selector-btn pull-left"></button>
+                    <span id="selected-skin" class="selected">Female Cop in Blue</span>
+                    <button id="next-skin" class="glyphicon glyphicon-triangle-right selector-btn pull-right"></button>
                 </div>
             </div>
             <div class="row margin-top-50">
@@ -47,8 +47,238 @@
         </div>
     </body>
     <script>
+        // Make this match Group.Type in Group.cs
+        var Groups = [
+            {
+                name: "The Officials",
+                description: "This group is all about making sure the law is followed.",
+                skins: [
+                    {
+                        name: "Female Cop in Blue",
+                        hash: 368603149
+                    },
+                    {
+                        name: "Male Cop in Blue",
+                        hash: 1581098148
+                    },
+                    {
+                        name: "Male Cop in Brown",
+                        hash: -1699520669
+                    },
+                    {
+                        name: "Male Cop in Brown",
+                        hash: 1939545845
+                    },
+                    {
+                        name: "Male Cop in Parka",
+                        hash: 451459928
+                    },
+                    {
+                        name: "Male BlackOps",
+                        hash: -1275859404
+                    },
+                    {
+                        name: "Male BlackOps",
+                        hash: 2047212121
+                    },
+                    {
+                        name: "Male BlackOps",
+                        hash: 1349953339
+                    },
+                    {
+                        name: "Male Security",
+                        hash: 2141384740
+                    },
+                    {
+                        name: "Male Security",
+                        hash: 666086773
+                    },
+                    {
+                        name: "Male Security",
+                        hash: 512955554
+                    },
+                    {
+                        name: "Male Marine",
+                        hash: 1634506681
+                    },
+                    {
+                        name: "Male Agent",
+                        hash: 1558115333
+                    }
+                ]
+            },
+            {
+                name: "The Hicks",
+                description: "A bunch of rednecks that make meth (smoke it too) out in the boonies.",
+                skins: [
+                    {
+                        name: "Skinny Male Hick",
+                        hash: 1165307954
+                    },
+                    {
+                        name: "Female Meth Head",
+                        hash: 1064866854
+                    },
+                    {
+                        name: "Female Escort",
+                        hash: -44746786
+                    },
+                    {
+                        name: "Male Biker",
+                        hash: 1330042375
+                    },
+                    {
+                        name: "Male Biker",
+                        hash: 1032073858
+                    },
+                    {
+                        name: "Male Biker",
+                        hash: 850468060
+                    },
+                ]
+            },
+            {
+                name: "The Thugs",
+                description: "Gangsters reminiscent of the Grove Street Families.",
+                skins: [
+                    {
+                        name: "Green Jacket Male",
+                        hash: -449965460
+                    },
+                    {
+                        name: "Green Jacket Male",
+                        hash: -1031795266
+                    },
+                    {
+                        name: "Shorts and Buttons Male",
+                        hash: 1624626906
+                    },
+                    {
+                        name: "Tee and Shorts Male",
+                        hash: 915948376
+                    },
+                    {
+                        name: "Escaped Convict",
+                        hash: 1596003233
+                    },
+                    {
+                        name: "Wangsta",
+                        hash: 1459905209
+                    },
+                    {
+                        name: "Plaid Buttons",
+                        hash: -613248456
+                    }
+                ]
+            },
+            {
+                name: "The Triad",
+                description: "Asian gang that deals hard drugs and human trafficking.",
+                skins: [
+                    {
+                        name: "Tatted Male",
+                        hash: -1872961334
+                    },
+                    {
+                        name: "Tatted Male in Tuque",
+                        hash: 62440720
+                    },
+                    {
+                        name: "Jacked Male",
+                        hash: -920443780
+                    },
+                    {
+                        name: "Shady Male",
+                        hash: -1463670378
+                    },
+                    {
+                        name: "Purple Button-up Male",
+                        hash: 891945583
+                    },
+                    {
+                        name: "Jacket Male",
+                        hash: 611648169
+                    },
+                    {
+                        name: "Suit Male",
+                        hash: 2093736314
+                    },
+                    {
+                        name: "Dumb Looking Male",
+                        hash: -1880237687
+                    }
+                ]
+            }
+        ];
+
+        var CurrentGroupIndex = 0;
+        var CurrentSkinIndex = 0;
+
+        function SetValues() {
+            var GroupName = Groups[CurrentGroupIndex].name;
+            var GroupDescription = Groups[CurrentGroupIndex].description;
+            var SkinName = Groups[CurrentGroupIndex].skins[CurrentSkinIndex].name;
+            var SkinHash = Groups[CurrentGroupIndex].skins[CurrentSkinIndex].hash;
+            $("#selected-group").text(GroupName);
+            $("#selected-group-description").text(GroupDescription);
+            $("#selected-skin").text(SkinName);
+            resourceCall("SetPlayerSkin", SkinHash);
+        }
+
+        function ShouldShowReturn(ShouldShow) {
+            if (ShouldShow) {
+                $("#return").show();
+            } else {
+                $("#return").hide();
+            }
+        }
+
+        function EnableButtons(IsEnabled) {
+            $("#return").prop("disabled", !IsEnabled);
+            $("#finish").prop("disabled", !IsEnabled);
+        }
+
         $(document).ready(function() {
-            
+            // Display the browser now that it has loaded
+            resourceCall("ShowCharacterCreator")
+            SetValues();
+            $("#prev-group").click(function(event) {
+                CurrentGroupIndex = (CurrentGroupIndex - 1) % Groups.length;
+                CurrentSkinIndex = 0;
+                SetValues();
+            });
+
+            $("#next-group").click(function(event) {
+                CurrentGroupIndex = (CurrentGroupIndex + 1) % Groups.length;
+                CurrentSkinIndex = 0;
+                SetValues();
+            });
+
+            $("#prev-skin").click(function(event) {
+                CurrentSkinIndex = (CurrentSkinIndex - 1) % Groups[CurrentGroupIndex].skins.length;
+                SetValues();
+            });
+
+            $("#next-skin").click(function(event) {
+                CurrentSkinIndex = (CurrentSkinIndex + 1) % Groups[CurrentGroupIndex].skins.length;
+                SetValues();
+            });
+
+            $("#return").click(function(event) {
+                resourceCall("ReturnToCharacterSelector");
+                EnableButtons(false);
+            });
+
+            $("#finish").click(function(event) {
+                var CharacterName = $("#character-name").val();
+                if (CharacterName == "") {
+                    $("#character-name").focus();
+                    return;
+                }
+                EnableButtons(false);
+                var SkinHash = Groups[CurrentGroupIndex].skins[CurrentSkinIndex].hash;
+                resourceCall("CreateCharacter", CharacterName, CurrentGroupIndex, SkinHash);
+            });
         });
     </script>
 </html>

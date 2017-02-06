@@ -53,13 +53,17 @@
         $(document).ready(function() {
             $("#login").click(function(event) {
                 resourceCall("LoginPlayer", String($("#password").val()));
-                if (password.length == 0) return;
+                if (password.length == 0) {
+                    return;
+                }
                 EnableSubmitButton(false);
             });
             $("#signup").click(function(event) {
                 var password = String($("#password").val());
                 var passwordConfirm = String($("#passwordConfirm").val());
-                if (password.length == 0 || passwordConfirm.length == 0) return;
+                if (password.length == 0 || passwordConfirm.length == 0) {
+                    return;
+                }
                 resourceCall("SignupPlayer", password, passwordConfirm);
                 EnableSubmitButton(false);
             });

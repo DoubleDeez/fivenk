@@ -19,6 +19,20 @@ namespace fivenk_rp
             TheOfficials_TrafficCop,
         }
 
+        public static Id GetFirstJobIdForGroup(Group.Type GroupType)
+        {
+            switch (GroupType)
+            {
+                default:
+                case Group.Type.TheHicks:
+                case Group.Type.TheThugs:
+                case Group.Type.TheTriad:
+                    return Id.None;
+                case Group.Type.TheOfficials:
+                    return Id.TheOfficials_MeterMaid;
+            }
+        }
+
         private static Job MeterMaid;
         public static Job GetMeterMaid()
         {
@@ -32,7 +46,6 @@ namespace fivenk_rp
                 JobGroup = Group.Type.TheOfficials,
                 NextJobs = new Id[] { Id.TheOfficials_MallCop },
                 ExpToLevel = 100,
-                NametagColor = new Color(0, 155, 255),
             };
             return MeterMaid;
         }
@@ -50,7 +63,6 @@ namespace fivenk_rp
                 JobGroup = Group.Type.TheOfficials,
                 NextJobs = new Id[] { Id.TheOfficials_SecurityGuard },
                 ExpToLevel = 300,
-                NametagColor = new Color(0, 155, 255),
             };
             return MallCop;
         }

@@ -51,6 +51,7 @@ namespace fivenk_rp
         {
             if (ClientHelper.IsPlayerLoggedIn(sender))
             {
+                // TODO#48 - Log error
                 API.triggerClientEvent(sender, EVENT_FAIL_LOGIN, "You're already logged in.");
                 return;
             }
@@ -70,6 +71,7 @@ namespace fivenk_rp
         {
             if (ClientHelper.IsPlayerLoggedIn(sender))
             {
+                // TODO#48 - Log error
                 API.triggerClientEvent(sender, EVENT_FAIL_SIGNUP, "You're already logged in.");
                 return;
             }

@@ -3,29 +3,29 @@ body {
 }
 
 #form {
-	display: inline-block;
-	border-radius: 8px;
-	background-color: rgba(23, 23, 23, 0.8);
-	padding: 60px 80px;
+    display: inline-block;
+    border-radius: 8px;
+    background-color: rgba(23, 23, 23, 0.8);
+    padding: 60px 80px;
 }
 
 .logo {
-	width: 300px;
+    width: 300px;
 }
 
 .form-title {
-	font-family: OpenSans;
-	font-size: 66px;
-	font-weight: 700;
-	color: #ff4848;
+    font-family: OpenSans;
+    font-size: 66px;
+    font-weight: 700;
+    color: #ff4848;
 }
 
 .username {
-	font-family: OpenSans;
-	font-size: 36px;
-	font-weight: bold;
-	font-style: normal;
-	color: #ffffff;
+    font-family: OpenSans;
+    font-size: 36px;
+    font-weight: bold;
+    font-style: normal;
+    color: #ffffff;
 }
 
 .password {
@@ -44,24 +44,24 @@ body {
 }
 
 .password:focus {
-	border: 2px solid #ff4848;
-	box-shadow: 0 0 15px rgba(255, 72, 72, 0.5);
-	outline: none;
+    border: 2px solid #ff4848;
+    box-shadow: 0 0 15px rgba(255, 72, 72, 0.5);
+    outline: none;
 }
 
 .submit {
-	border: 2px solid #ff4848;
-	border-radius: 8px;
-	background-color: #ff4848;
-	font-family: OpenSans;
-	font-size: 28px;
-	font-weight: 800;
-	font-style: normal;
-	text-align: center;
-	color: #ffffff;
-	padding: 15px 50px;
-	margin-top: 40px;
-	transition: 1s;
+    border: 2px solid #ff4848;
+    border-radius: 8px;
+    background-color: #ff4848;
+    font-family: OpenSans;
+    font-size: 28px;
+    font-weight: 800;
+    font-style: normal;
+    text-align: center;
+    color: #ffffff;
+    padding: 15px 50px;
+    margin-top: 40px;
+    transition: 1s;
     outline: none;
 }
 
@@ -75,8 +75,8 @@ body {
 }
 
 .submit:hover {
-	color: #ffffff;
-	background-color: transparent;
-	transition: 1s;
+    color: #ffffff;
+    background-color: transparent;
+    transition: 1s;
 }
 
