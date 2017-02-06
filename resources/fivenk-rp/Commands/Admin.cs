@@ -82,7 +82,7 @@ namespace fivenk_rp
 
         [Command("tp")]
         [Acl(Acl.Moderator)]
-        public void Teleport(Client sender, Client target)
+        public void TeleportTo(Client sender, Client target)
         {
             MethodBase method = MethodBase.GetCurrentMethod();
             Acl methodAcl = CommandHelper.GetMethodAcl(method);
@@ -98,9 +98,9 @@ namespace fivenk_rp
             CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
-        [Command("tpto")]
+        [Command("tpp")]
         [Acl(Acl.Moderator)]
-        public void TeleportTo(Client sender, Client target)
+        public void TeleportPlayerToYou(Client sender, Client target)
         {
             MethodBase method = MethodBase.GetCurrentMethod();
             Acl methodAcl = CommandHelper.GetMethodAcl(method);
@@ -128,6 +128,42 @@ namespace fivenk_rp
                 bool isEnabled = !API.getEntityInvincible(sender);
                 API.setEntityInvincible(sender, isEnabled);
                 API.sendNotificationToPlayer(sender, String.Format("God mode {0}", isEnabled ? "Enabled" : "Disabled"));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
+        [Command("tpxyz", "~y~Teleport to specific coordinates.\n~y~Usage: ~w~/tpxyz [x] [y] [z]")]
+        [Acl(Acl.Moderator)]
+        public void TeleportToXYZ(Client sender, double x, double y, double z)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                var pos = API.getEntityPosition(sender.handle);
+                API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
+                API.setEntityPosition(sender.handle, new Vector3(x, y, z));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
+        [Command("tppxyz", "~y~Teleport a player to specific coordinates.\n~y~Usage: ~w~/tppxyz [player] [x] [y] [z]")]
+        [Acl(Acl.Moderator)]
+        public void TeleportPlayerToXYZ(Client sender, Client target, double x, double y, double z)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                var pos = API.getEntityPosition(target.handle);
+                API.createParticleEffectOnPosition("scr_rcbarry1", "scr_alien_teleport", pos, new Vector3(), 1f);
+                API.setEntityPosition(target.handle, new Vector3(x, y, z));
                 return;
             }
 
