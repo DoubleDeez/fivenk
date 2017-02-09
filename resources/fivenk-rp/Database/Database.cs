@@ -2,6 +2,7 @@
 using SQLite;
 using GTANetworkServer;
 using System;
+using System.Collections.Generic;
 
 namespace fivenk_rp
 {
@@ -62,6 +63,16 @@ namespace fivenk_rp
         {
             if (DATABASE == null) return;
             DATABASE.Close();
+        }
+
+        public static List<T> ConvertQueryToList<T>(TableQuery<T> Query)
+        {
+            List<T> NewList = new List<T>();
+            foreach (T value in Query)
+            {
+                NewList.Add(value);
+            }
+            return NewList;
         }
     }
 }

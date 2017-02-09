@@ -25,12 +25,14 @@
     <!-- CEF CSS Files -->
     <file src="Client/CEF/CSS/bootstrap.min.css" />
     <file src="Client/CEF/CSS/charactercreator.css" />
+    <file src="Client/CEF/CSS/characterselector.css" />
     <file src="Client/CEF/CSS/common.css" />
     <file src="Client/CEF/CSS/login.css" />
     <file src="Client/CEF/CSS/speedometer.css" />
 
     <!-- CEF JS Files -->
     <file src="Client/CEF/JS/jquery.min.js" />
+    <file src="Client/CEF/JS/groupdata.js" />
 
     <!-- CEF Image Files -->
     <file src="Client/CEF/Images/logo.png" />
@@ -38,6 +40,7 @@
 
     <!-- CEF HTML Files -->
     <file src="Client/CEF/charactercreator.html" />
+    <file src="Client/CEF/characterselector.html" />
     <file src="Client/CEF/login.html" />
     <file src="Client/CEF/speedometer.html" />
 

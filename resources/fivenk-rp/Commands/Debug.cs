@@ -53,7 +53,7 @@ namespace fivenk_rp
         }
 
         [Command("skin")]
-        [Acl(Acl.Default)]
+        [Acl(Acl.Admin)]
         public void ChangeSkinCommand(Client sender, PedHash model)
         {
             MethodBase method = MethodBase.GetCurrentMethod();

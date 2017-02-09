@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/common.css">
+        <link rel="stylesheet" type="text/css" href="CSS/characterselector.css">
+        <title>Character Selector</title>
+        <script src="JS/jquery.min.js"></script>
+        <script src="JS/groupdata.js"></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-xs-offset-4 col-xs-8">
+                <h1 class="menu-title">CHARACTER SELECT</h1>
+                <div class="characters"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <h1 class="char-name"></h1>
+                <h2 class="char-cash"></h2>
+                <h3 class="char-job"></h3>
+                <button id="play" class="btn play-btn">PLAY</button>
+                <button class="btn delete-btn">Delete Character</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        var chars = null;
+
+        function SetCharacters(charstring) {
+            chars = charstring;
+            console.log(charstring);
+            $(".characters").text(charstring);
+            var parsed = JSON.parse(charstring);
+            console.log(parsed);
+        }
+
+        $(document).ready(function() {
+            resourceCall("ShowCharacterSelector");
+            $("#play").click(function(event) {
+                console.log(chars);
+                var parsed = JSON.parse(chars);
+                console.log(parsed);
+            });
+        });
+    </script>
+</html>

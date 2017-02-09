@@ -33,7 +33,8 @@ namespace fivenk_rp
             API.shared.setEntityRotation(client, CharacterCreatorDirection);
             if (Character.DoesPlayerHaveAnyCharacters(player))
             {
-                API.shared.triggerClientEvent(client, EVENT_DISPLAY_CHARACTER_SELECTOR);
+                API.shared.triggerClientEvent(client, EVENT_DISPLAY_CHARACTER_SELECTOR
+                    , Character.GetCharactersForPlayerStringified(player));
             }
             else
             {
@@ -45,7 +46,8 @@ namespace fivenk_rp
         {
             if (Character.DoesCharacterWithNameExist(CharacterName))
             {
-                API.triggerClientEvent(client, EVENT_FAIL_CREATE_CHARACTER, "A character with this name already exists.");
+                API.triggerClientEvent(client, EVENT_FAIL_CREATE_CHARACTER
+                    , "A character with this name already exists.");
                 return;
             }
 
@@ -58,6 +60,14 @@ namespace fivenk_rp
             }
 
             API.triggerClientEvent(client, EVENT_SUCCESS_CREATE_CHARACTER);
+            Character character = ClientHelper.GetCharacterFromClient(client);
+            if (character == null)
+            {
+                // TODO#48 - Log error
+                API.triggerClientEvent(client, EVENT_FAIL_CREATE_CHARACTER
+                    , "Please rejoin the server to see if the character has been created.");
+                return;
+            }
 
             Color NametagColor = Group.Colors[GroupIndex];
             API.setPlayerName(client, CharacterName);
@@ -66,14 +76,26 @@ namespace fivenk_rp
                 , Convert.ToByte(NametagColor.red)
                 , Convert.ToByte(NametagColor.green)
                 , Convert.ToByte(NametagColor.blue));
-            API.setEntityPosition(client, new Vector3(447.1f, -984.21f, 30.69f));
+            API.setEntityPosition(client, character.GetPosition());
+            API.setEntityRotation(client, character.GetRotation());
+            API.setPlayerSkin(client, character.SkinHash);
+            // Apparently this native is necessary for setting skin?
+            API.sendNativeToPlayer(client, 0x45EEE61580806D63, client.handle);
         }
 
         public void OnClientEventHandler(Client sender, string eventName, object[] args)
         {
             if (eventName.Equals(EVENT_CREATE_CHARACTER) && args.Length == 3)
             {
-                TryToCreateCharacter(sender, Convert.ToString(args[0]), Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
+                TryToCreateCharacter(sender
+                    , Convert.ToString(args[0])
+                    , Convert.ToInt32(args[1])
+                    , Convert.ToInt32(args[2]));
+            }
+            else if (eventName.Equals(EVENT_DISPLAY_CHARACTER_SELECTOR))
+            {
+                API.shared.triggerClientEvent(sender, EVENT_DISPLAY_CHARACTER_SELECTOR
+                    , Character.GetCharactersForPlayerStringified(ClientHelper.GetPlayerFromClient(sender)));
             }
         }
     }

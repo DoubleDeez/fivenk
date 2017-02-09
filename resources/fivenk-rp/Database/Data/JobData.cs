@@ -17,6 +17,9 @@ namespace fivenk_rp
             TheOfficials_MallCop,
             TheOfficials_SecurityGuard,
             TheOfficials_TrafficCop,
+            TheHicks_One,
+            TheThugs_One,
+            TheTriad_One,
         }
 
         public static Id GetFirstJobIdForGroup(Group.Type GroupType)
@@ -31,6 +34,31 @@ namespace fivenk_rp
                 case Group.Type.TheOfficials:
                     return Id.TheOfficials_MeterMaid;
             }
+        }
+
+        public static Job GetJob(Id JobId)
+        {
+            switch (JobId)
+            {
+                default:
+                case Id.None:
+                    return null;
+                case Id.TheOfficials_MeterMaid:
+                    return GetMeterMaid();
+                case Id.TheOfficials_MallCop:
+                    return GetMallCop();
+                case Id.TheOfficials_SecurityGuard:
+                    return null;
+                case Id.TheOfficials_TrafficCop:
+                    return null;
+            }
+        }
+
+        public static string GetJobTitle(Id JobId)
+        {
+            Job job = GetJob(JobId);
+            if (job == null) return "None";
+            return job.JobTitle;
         }
 
         private static Job MeterMaid;

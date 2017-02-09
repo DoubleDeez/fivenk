@@ -1,7 +1,8 @@
 var CharacterBrowser = null;
 var Camera = null;
 var CharacterCameraPos = new Vector3(3513.92, 5118.72, 5.76);
-var DoesHaveCharacters = false;
+var CharString = "{}";
+var HasCharacters = false;
 
 var CharacterCreatorPath = "Client/CEF/charactercreator.html";
 var CharacterSelectorPath = "Client/CEF/characterselector.html";
@@ -10,7 +11,9 @@ API.onServerEventTrigger.connect(function (eventName, args) {
     switch (eventName) {
     case "display_character_selector":
         if(args.length == 0) return;
-        OnDisplayCharacterSelector(args[0]);
+        API.sendChatMessage("This should be a list of characters: " + args[0]);
+        CharString = args[0];
+        OnDisplayCharacterSelector();
         break;
     case "display_character_creator":
         OnDisplayCharacterCreator();
@@ -49,17 +52,25 @@ function CreateBrowser(PagePath) {
     API.setCanOpenChat(false);
 }
 
+function DestroyBrowser() {
+    API.destroyCefBrowser(CharacterBrowser);
+    API.showCursor(false);
+    API.setCanOpenChat(true);
+    CharacterBrowser = null;
+}
+
 function SetPlayerSkin(SkinHash) {
     API.setPlayerSkin(SkinHash);
 }
 
 function ShowCharacterCreator() {
     API.setCefBrowserHeadless(CharacterBrowser, false);
-    CharacterBrowser.call("ShouldShowReturn", DoesHaveCharacters);
+    CharacterBrowser.call("ShouldShowReturn", HasCharacters);
 }
 
 function ShowCharacterSelector() {
     API.setCefBrowserHeadless(CharacterBrowser, false);
+    CharacterBrowser.call("SetCharacters", CharString);
 }
 
 function SetupCamera() {
@@ -68,19 +79,30 @@ function SetupCamera() {
     API.setActiveCamera(Camera);
 }
 
-function OnDisplayCharacterSelector(characters) {
-    if(characters.length == 0) {
-        OnDisplayCharacterCreator();
-        return;
-    }
-    DoesHaveCharacters = true;
+function DestroyCamera() {
+    API.setActiveCamera(null);
+    Camera = null;
+}
+
+function OnDisplayCharacterSelector() {
     SetupCamera();
     CreateBrowser(CharacterSelectorPath);
+    HasCharacters = true;
 }
 
 function OnDisplayCharacterCreator() {
     SetupCamera();
     CreateBrowser(CharacterCreatorPath);
+}
+
+function OnSelectCreateCharactor() {
+    DestroyBrowser();
+    CreateBrowser(CharacterCreatorPath);
+}
+
+function OnEnterGame() {
+    DestroyCamera();
+    DestroyBrowser();
 }
 
 function CreateCharacter(CharacterName, GroupIndex, SkinHash) {
@@ -89,14 +111,9 @@ function CreateCharacter(CharacterName, GroupIndex, SkinHash) {
 
 function ReturnToCharacterSelector() {
     ExitCharacterCreator();
-    // TODO reopen character selector
-    API.setActiveCamera(null);
-    Camera = null;
+    API.triggerServerEvent("display_character_creator", CharacterName, GroupIndex, SkinHash);
 }
 
 function ExitCharacterCreator() {
-    API.destroyCefBrowser(CharacterBrowser);
-    API.showCursor(false);
-    API.setCanOpenChat(true);
-    CharacterBrowser = null;
+    DestroyBrowser();
 }
