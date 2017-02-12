@@ -1,3 +1,139 @@
 body {
     background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
+.menu-title {
+    font-family: Cornerstone;
+    font-size: 32px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    height: auto;
+}
+
+.characters {
+    background-image: linear-gradient(to top, #fb4646, #fb4646);
+    background-size: 6px 100%;
+    background-repeat: repeat-y;
+    height: 250px;
+    padding-left: 6px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.char-option {
+    font-family: OpenSans;
+    font-size: 22px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.char-option-selected, .char-option:hover, .create-char {
+    font-family: OpenSans;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    color: #ffffff;
+    padding: 10px 15px;
+    background-image: linear-gradient(to left, rgba(255, 72, 72, 0), #fb4646);
+    cursor: pointer;
+}
+
+.char-info-margin {
+    margin-top: 240px;
+}
+
+.char-style {
+    font-family: Cornerstone;
+    font-size: 32px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1.5px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.char-job {
+    font-family: OpenSans;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.play-btn {
+    border-radius: 5px;
+    border: solid 2px #ffffff;
+    background-color: #ffffff;
+    font-family: Cornerstone;
+    font-size: 32px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: justify;
+    color: #222222;
+    padding: 10px 35px;
+    transition: 1s;
+}
+
+.play-btn:hover {
+    background: transparent;
+    color: #ffffff;
+    transition: 1s;
+}
+
+.delete-btn {
+    opacity: 0.7;
+    border-radius: 5px;
+    border: solid 2px #fb4646;
+    background-color: #fb4646;
+    font-family: OpenSans;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+    padding: 10px 15px;
+    margin-top: 75px;
+    transition: 1s;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #ffffff;
+    transition: 1s;
 }

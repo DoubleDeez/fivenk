@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-xs-2 top-level-menu">Name</div>
                 <div class="col-xs-10 text-center padding-0-50">
-                    <input id="character-name" class="character-name" placeholder="Character Name">
+                    <input id="char-name" class="character-name" placeholder="Character Name">
                 </div>
             </div>
             <div class="row margin-top-50">
@@ -81,24 +81,36 @@
             SetValues();
 
             $("#prev-group").click(function(event) {
-                CurrentGroupIndex = (CurrentGroupIndex - 1) % Groups.length;
+                if (CurrentGroupIndex <= 0) {
+                    CurrentGroupIndex = Groups.length;
+                }
+                CurrentGroupIndex--;
                 CurrentSkinIndex = 0;
                 SetValues();
             });
 
             $("#next-group").click(function(event) {
-                CurrentGroupIndex = (CurrentGroupIndex + 1) % Groups.length;
+                CurrentGroupIndex++;
+                if (CurrentGroupIndex >= Groups.length) {
+                    CurrentGroupIndex = 0;
+                }
                 CurrentSkinIndex = 0;
                 SetValues();
             });
 
             $("#prev-skin").click(function(event) {
-                CurrentSkinIndex = (CurrentSkinIndex - 1) % Groups[CurrentGroupIndex].skins.length;
+                if (CurrentSkinIndex <= 0) {
+                    CurrentSkinIndex = Groups[CurrentGroupIndex].skins.length;
+                }
+                CurrentSkinIndex--;
                 SetValues();
             });
 
             $("#next-skin").click(function(event) {
-                CurrentSkinIndex = (CurrentSkinIndex + 1) % Groups[CurrentGroupIndex].skins.length;
+                CurrentSkinIndex++;
+                if (CurrentSkinIndex >= Groups[CurrentGroupIndex].skins.length) {
+                    CurrentSkinIndex = 0;
+                }
                 SetValues();
             });
 
@@ -108,9 +120,9 @@
             });
 
             $("#finish").click(function(event) {
-                var CharacterName = $("#character-name").val();
+                var CharacterName = "" + $("#char-name").val();
                 if (CharacterName == "") {
-                    $("#character-name").focus();
+                    $("#char-name").focus();
                     return;
                 }
                 EnableButtons(false);

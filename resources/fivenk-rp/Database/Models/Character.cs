@@ -42,7 +42,7 @@ namespace fivenk_rp
         {
             StringBuilder sb = new StringBuilder(2048);
             sb.AppendLine("{");
-            sb.Append("\"Id\": ").Append(PlayerId).AppendLine(",");
+            sb.Append("\"Id\": ").Append(Id).AppendLine(",");
             sb.Append("\"Job\": \"").Append(JobData.GetJobTitle(JobId)).AppendLine("\",");
             sb.Append("\"Name\": \"").Append(CharacterName).AppendLine("\",");
             sb.Append("\"Cash\": ").Append(Cash).AppendLine(",");
@@ -99,8 +99,13 @@ namespace fivenk_rp
                 return false;
             }
 
-            API.shared.setEntityData(client, "Character", character);
             return true;
+        }
+
+        public static Character GetCharacterWithId(int PlayerId, int CharacterId)
+        {
+            return GetDB().Table<Character>()
+                .Where(character => (character.Id == CharacterId && character.PlayerId == PlayerId)).First();
         }
 
         public static List<Character> GetCharactersForPlayer(Player player)
