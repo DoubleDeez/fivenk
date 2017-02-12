@@ -42,5 +42,15 @@ namespace fivenk_rp
             }
             player.Save();
         }
+
+        public static void SaveCharacter(Client client)
+        {
+            Character character = GetCharacterFromClient(client);
+            if (character == null)
+            {
+                return;
+            }
+            character.Save();
+        }
     }
 }

@@ -37,6 +37,10 @@ namespace fivenk_rp
         {
             return new Vector3(RotationX, RotationY, RotationZ);
         }
+        public void Save()
+        {
+            GetDB().Update(this);
+        }
 
         public override string ToString()
         {

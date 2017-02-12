@@ -45,6 +45,7 @@ namespace fivenk_rp
         public void OnPlayerDisconnected(Client client, string reason)
         {
             ClientHelper.SavePlayer(client);
+            ClientHelper.SaveCharacter(client);
         }
 
         public void Login(Client sender, string password)
@@ -98,6 +99,8 @@ namespace fivenk_rp
             {
                 foreach (var data in API.getAllEntityData(client))
                 {
+                    ClientHelper.SavePlayer(client);
+                    ClientHelper.SaveCharacter(client);
                     API.resetEntityData(client, data);
                 }
             }
