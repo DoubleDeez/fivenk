@@ -104,7 +104,6 @@
     <Compile Include="fivenk-rp\Helpers\AsyncHelper.cs" />
     <Compile Include="fivenk-rp\Helpers\ClientHelper.cs" />
     <Compile Include="fivenk-rp\Helpers\CommandHelper.cs" />
-    <Compile Include="fivenk-rp\Spawners\SpawnManager.cs" />
     <Compile Include="fivenk-rp\Spawners\VehicleSpawner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
