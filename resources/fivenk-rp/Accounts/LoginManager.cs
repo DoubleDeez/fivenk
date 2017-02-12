@@ -25,6 +25,16 @@ namespace fivenk_rp
 
         public void OnPlayerConnected(Client client)
         {
+            if (!client.isCEFenabled)
+            {
+                API.freezePlayer(client, true);
+                API.sendChatMessageToPlayer(client, "~r~ERROR:~w~ You do not have CEF enabled, which is required to play");
+                API.sendChatMessageToPlayer(client, "You can enable it by hitting ~b~[ESC]~w~ and going Settings -> Experimental");
+                API.sendChatMessageToPlayer(client, "If you experience crashing, disable Steam and Discord overlays");
+                API.sendChatMessageToPlayer(client, "You must restart the game after enabling CEF");
+                return;
+            }
+
             if (ClientHelper.IsPlayerLoggedIn(client))
             {
                 // TODO#48 - Log an error here once we have a logging library, since a player shouldn't be logged in
