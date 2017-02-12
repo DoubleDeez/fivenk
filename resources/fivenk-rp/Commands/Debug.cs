@@ -95,6 +95,22 @@ namespace fivenk_rp
             CommandHelper.ClientDoesNotHavePermission(sender);
         }
 
+        [Command("ped")]
+        [Acl(Acl.Admin)]
+        public void SpawnPed(Client sender, PedHash hash, float heading = 0)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                API.createPed(hash, API.getEntityPosition(sender), heading);
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
         private bool CheckPlayerLoggedInWithError(Client player)
         {
             if (!ClientHelper.IsPlayerLoggedIn(player))

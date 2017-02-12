@@ -926,30 +926,6 @@
       <SecondaryColor>0</SecondaryColor>
     </MapObject>
     <MapObject>
-      <Type>Ped</Type>
-      <Position>
-        <X>414.224731</X>
-        <Y>-1034.4209</Y>
-        <Z>29.4492474</Z>
-      </Position>
-      <Rotation>
-        <X>0.03586182</X>
-        <Y>-0.317992866</Y>
-        <Z>-23.6975689</Z>
-      </Rotation>
-      <Hash>1581098148</Hash>
-      <Dynamic>true</Dynamic>
-      <Quaternion>
-        <X>-0.0002635066</X>
-        <Y>-0.00278013921</Y>
-        <Z>-0.2053278</Z>
-        <W>0.978689253</W>
-      </Quaternion>
-      <Action>Cheering</Action>
-      <Relationship>Neutral</Relationship>
-      <Weapon>Revolver</Weapon>
-    </MapObject>
-    <MapObject>
       <Type>Pickup</Type>
       <Position>
         <X>451.150116</X>
