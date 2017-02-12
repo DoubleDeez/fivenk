@@ -37,6 +37,13 @@ namespace fivenk_rp
             }
         }
 
+        public int PaySalary()
+        {
+            int PayAmount = Convert.ToInt32(JobData.GetSalaryFromJobId(JobId) * SalaryMultiplier);
+            GiveCash(PayAmount);
+            return PayAmount;
+        }
+
         public Vector3 GetPosition()
         {
             return new Vector3(PositionX, PositionY, PositionZ);

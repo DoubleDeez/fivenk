@@ -51,6 +51,13 @@ namespace fivenk_rp
             }
         }
 
+        public static int GetSalaryFromJobId(Id JobId)
+        {
+            Job job = GetJob(JobId);
+            if (job == null) return 0;
+            return job.BaseSalary;
+        }
+
         public static Job GetJob(Id JobId)
         {
             if(!JobIdMap.ContainsKey(JobId))
