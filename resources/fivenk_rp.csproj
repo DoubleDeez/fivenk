@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fivenk-rp\Client\MoneyDisplay.js" />
-    <Content Include="fivenk-rp\Client\SkinSelector.js" />
     <Content Include="fivenk-rp\Client\Speedometer.js" />
     <Content Include="fivenk-rp\meta.xml">
       <SubType>Designer</SubType>

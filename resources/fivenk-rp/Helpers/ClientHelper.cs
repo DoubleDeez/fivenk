@@ -17,7 +17,21 @@ namespace fivenk_rp
 
         public static Character GetCharacterFromClient(Client client)
         {
+            if (client == null) return null;
             return API.shared.getEntityData(client, "Character");
+        }
+
+        public static Client GetClientWithPlayerName(string PlayerName)
+        {
+            List<Client> clients = API.shared.getAllPlayers();
+            foreach (Client client in clients)
+            {
+                if (API.shared.getPlayerName(client).Equals(PlayerName))
+                {
+                    return client;
+                }
+            }
+            return null;
         }
 
         public static bool IsPlayerLoggedIn(Client client)

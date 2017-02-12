@@ -28,6 +28,15 @@ namespace fivenk_rp
         public double RotationY { get; set; }
         public double RotationZ { get; set; }
 
+        public void GiveCash(int Amount)
+        {
+            Cash += Amount;
+            if (Cash < 0)
+            {
+                Cash = 0;
+            }
+        }
+
         public Vector3 GetPosition()
         {
             return new Vector3(PositionX, PositionY, PositionZ);
@@ -37,6 +46,7 @@ namespace fivenk_rp
         {
             return new Vector3(RotationX, RotationY, RotationZ);
         }
+
         public void Save()
         {
             GetDB().Update(this);

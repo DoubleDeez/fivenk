@@ -12,7 +12,6 @@
     <script src="Client/CharacterCreator.js" type="client" lang="javascript" />
     <script src="Client/Login.js" type="client" lang="javascript" />
     <script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
-    <script src="Client/SkinSelector.js" type="client" lang="javascript" />
     <script src="Client/Speedometer.js" type="client" lang="javascript" />
 
 
