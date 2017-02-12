@@ -5,7 +5,7 @@
 
     <!-- Enable debugging -->
     <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-	<!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
+    <!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
 
 
     <!-- Client JS Files -->

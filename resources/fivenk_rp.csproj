@@ -107,6 +107,8 @@
     <Compile Include="fivenk-rp\Helpers\CommandHelper.cs" />
     <Compile Include="fivenk-rp\Spawners\BlipManager.cs" />
     <Compile Include="fivenk-rp\Spawners\VehicleSpawner.cs" />
+    <Compile Include="fivenk-rp\Spawners\MapLoader.cs" />
+    <Compile Include="fivenk-rp\Spawners\SpawnManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
