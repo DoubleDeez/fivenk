@@ -19,7 +19,7 @@ namespace fivenk_rp
             TheOfficials_TrafficCop,
             TheHicks_MethCook,
             TheThugs_Pusher,
-            TheTriad_Kidnapper,
+            TheTriad_BlueLantern,
         }
 
         private static readonly Dictionary<Id, Job> JobIdMap = new Dictionary<Id, Job>
@@ -31,7 +31,7 @@ namespace fivenk_rp
             { Id.TheOfficials_TrafficCop, null },
             { Id.TheHicks_MethCook, GetMethCook() },
             { Id.TheThugs_Pusher, GetPusher() },
-            { Id.TheTriad_Kidnapper, GetKidnapper() },
+            { Id.TheTriad_BlueLantern, GetBlueLantern() },
         };
 
         public static Id GetFirstJobIdForGroup(Group.Type GroupType)
@@ -47,7 +47,7 @@ namespace fivenk_rp
                 case Group.Type.TheThugs:
                     return Id.TheThugs_Pusher;
                 case Group.Type.TheTriad:
-                    return Id.TheTriad_Kidnapper;
+                    return Id.TheTriad_BlueLantern;
             }
         }
 
@@ -135,21 +135,21 @@ namespace fivenk_rp
             return Pusher;
         }
 
-        private static Job Kidnapper;
-        public static Job GetKidnapper()
+        private static Job BlueLantern;
+        public static Job GetBlueLantern()
         {
-            if (Kidnapper != null) return Kidnapper;
-            Kidnapper = new Job
+            if (BlueLantern != null) return BlueLantern;
+            BlueLantern = new Job
             {
-                Id = Id.TheTriad_Kidnapper,
-                JobTitle = "Kidnapper",
+                Id = Id.TheTriad_BlueLantern,
+                JobTitle = "Blue Lantern",
                 JobDescription = "",
                 BaseSalary = 200,
                 JobGroup = Group.Type.TheTriad,
                 NextJobs = new Id[] { Id.None },
                 ExpToLevel = 100,
             };
-            return Kidnapper;
+            return BlueLantern;
         }
     }
 }
