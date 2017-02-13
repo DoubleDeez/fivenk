@@ -1154,52 +1154,7 @@
       <Flag>515</Flag>
     </MapObject>
   </Objects>
-  <RemoveFromWorld>
-    <MapObject Id="0">
-      <Type>Prop</Type>
-      <Position>
-        <X>482.989929</X>
-        <Y>-743.1454</Y>
-        <Z>36.32656</Z>
-      </Position>
-      <Rotation>
-        <X>0</X>
-        <Y>-0</Y>
-        <Z>90.00001</Z>
-      </Rotation>
-      <Hash>1426534598</Hash>
-      <Dynamic>false</Dynamic>
-      <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>0.7071068</Z>
-        <W>0.7071067</W>
-      </Quaternion>
-      <Door>false</Door>
-    </MapObject>
-    <MapObject Id="1">
-      <Type>Prop</Type>
-      <Position>
-        <X>446.4</X>
-        <Y>-988.5</Y>
-        <Z>29.771</Z>
-      </Position>
-      <Rotation>
-        <X>-89.99999</X>
-        <Y>-0</Y>
-        <Z>179.999985</Z>
-      </Rotation>
-      <Hash>701173564</Hash>
-      <Dynamic>false</Dynamic>
-      <Quaternion>
-        <X>-5.33850759E-08</X>
-        <Y>-0.707106769</Y>
-        <Z>0.707106769</Z>
-        <W>5.3385083E-08</W>
-      </Quaternion>
-      <Door>false</Door>
-    </MapObject>
-  </RemoveFromWorld>
+  <RemoveFromWorld />
   <Markers />
   <Metadata>
     <Creator>DoubleDeez</Creator>
