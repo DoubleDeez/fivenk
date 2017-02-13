@@ -22,6 +22,7 @@ namespace fivenk_rp
         public void OnResourceStartHandler()
         {
             API.setGamemodeName("FiveNK-RP");
+            BlipManager.InitBlips();
         }
 
         public void OnResourceStopHandler()
