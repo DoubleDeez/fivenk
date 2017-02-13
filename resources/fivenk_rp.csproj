@@ -101,6 +101,7 @@
     <Compile Include="fivenk-rp\Database\Models\Log.cs" />
     <Compile Include="fivenk-rp\Database\Models\Player.cs" />
     <Compile Include="fivenk-rp\FiveNK.cs" />
+    <Compile Include="fivenk-rp\Gameplay\CaptureMission.cs" />
     <Compile Include="fivenk-rp\Gameplay\SalaryManager.cs" />
     <Compile Include="fivenk-rp\Helpers\AsyncHelper.cs" />
     <Compile Include="fivenk-rp\Helpers\ClientHelper.cs" />

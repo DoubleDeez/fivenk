@@ -21,6 +21,22 @@ namespace fivenk_rp
             return API.shared.getEntityData(client, "Character");
         }
 
+        public static Group.Type GetGroupFromClient(Client client)
+        {
+            if (client == null)
+            {
+                return Group.Type.None;
+            }
+
+            Character character = GetCharacterFromClient(client);
+            if (character == null)
+            {
+                return Group.Type.None;
+            }
+
+            return JobData.GetGroupFromJobId(character.JobId);
+        }
+
         public static Client GetClientWithPlayerName(string PlayerName)
         {
             List<Client> clients = API.shared.getAllPlayers();

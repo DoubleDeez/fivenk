@@ -30,6 +30,24 @@ namespace fivenk_rp
         };
 
         // Make sure these map to the enum above
+        public static readonly string[] ChatColors =
+        {
+            "~b~",
+            "~r~",
+            "~g~",
+            "~y~"
+        };
+
+        // Make sure these map to the enum above
+        public static readonly int[] BlipColors =
+        {
+            77,
+            75,
+            25,
+            60
+        };
+
+        // Make sure these map to the enum above
         public static readonly Color[] Colors =
         {
             new Color(0, 155, 255),

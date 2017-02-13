@@ -58,6 +58,13 @@ namespace fivenk_rp
             return job.BaseSalary;
         }
 
+        public static Group.Type GetGroupFromJobId(Id JobId)
+        {
+            Job job = GetJob(JobId);
+            if (job == null) return Group.Type.None;
+            return job.JobGroup;
+        }
+
         public static Job GetJob(Id JobId)
         {
             if (!JobIdMap.ContainsKey(JobId))

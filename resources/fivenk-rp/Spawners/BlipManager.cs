@@ -21,25 +21,29 @@ namespace fivenk_rp
         private static void CreateTheOfficialsBlip()
         {
             // Police badge
-            CreateBlip(Group.SpawnPositions[(int)Group.Type.TheOfficials], 60, 77);
+            int GroupId = (int)Group.Type.TheOfficials;
+            CreateBlip(Group.SpawnPositions[GroupId], 60, Group.BlipColors[GroupId]);
         }
 
         private static void CreateTheHicksBlip()
         {
             // Erlenmeyer flask
-            CreateBlip(Group.SpawnPositions[(int)Group.Type.TheHicks], 499, 75);
+            int GroupId = (int)Group.Type.TheHicks;
+            CreateBlip(Group.SpawnPositions[GroupId], 499, Group.BlipColors[GroupId]);
         }
 
         private static void CreateTheThugsBlip()
         {
             // Pot leaf
-            CreateBlip(Group.SpawnPositions[(int)Group.Type.TheThugs], 469, 25);
+            int GroupId = (int)Group.Type.TheThugs;
+            CreateBlip(Group.SpawnPositions[GroupId], 469, Group.BlipColors[GroupId]);
         }
 
         private static void CreateTheTriadBlip()
         {
             // Skull
-            CreateBlip(Group.SpawnPositions[(int)Group.Type.TheTriad], 84, 60);
+            int GroupId = (int)Group.Type.TheTriad;
+            CreateBlip(Group.SpawnPositions[GroupId], 84, Group.BlipColors[GroupId]);
         }
 
         public static Blip CreateBlip(Vector3 Position, int SpriteId, int Color = 4, int Dimension = 0)
