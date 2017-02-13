@@ -4,22 +4,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>1698.28394</X>
-        <Y>3275.02612</Y>
-        <Z>48.6459541</Z>
+        <X>1701.6969</X>
+        <Y>3264.124</Y>
+        <Z>42.0220757</Z>
       </Position>
       <Rotation>
-        <X>0</X>
-        <Y>-0</Y>
-        <Z>170.555954</Z>
+        <X>-0.2503742</X>
+        <Y>1.63971591</Y>
+        <Z>-167.847687</Z>
       </Rotation>
       <Hash>1077420264</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>0.9966058</Z>
-        <W>0.0823214352</W>
+        <X>-0.0139970621</X>
+        <Y>-0.00368700875</Y>
+        <Z>0.9942746</Z>
+        <W>-0.105870269</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>111</PrimaryColor>
@@ -28,22 +28,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>1732.43347</X>
-        <Y>3305.9563</Y>
-        <Z>46.67149</Z>
+        <X>1730.68774</X>
+        <Y>3301.118</Y>
+        <Z>41.744175</Z>
       </Position>
       <Rotation>
-        <X>0</X>
-        <Y>-0</Y>
-        <Z>-163.897476</Z>
+        <X>-3.953184</X>
+        <Y>-1.40965593</Y>
+        <Z>-177.534546</Z>
       </Rotation>
       <Hash>621481054</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>0.9901432</Z>
-        <W>-0.140059</W>
+        <X>0.0130330632</X>
+        <Y>-0.03421613</Y>
+        <Z>0.9991073</Z>
+        <W>-0.0210747682</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>112</PrimaryColor>
@@ -556,22 +556,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>341.3013</X>
-        <Y>-950.5546</Y>
-        <Z>29.9353352</Z>
+        <X>341.3017</X>
+        <Y>-950.540161</Y>
+        <Z>28.91261</Z>
       </Position>
       <Rotation>
-        <X>-0</X>
-        <Y>-0</Y>
-        <Z>-46.4522133</Z>
+        <X>-1.26728737</X>
+        <Y>-1.15682</Y>
+        <Z>-46.41684</Z>
       </Rotation>
       <Hash>-685276541</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>-0.394360662</Z>
-        <W>0.918955743</W>
+        <X>-0.0141414674</X>
+        <Y>-0.00491965376</Y>
+        <Z>-0.394135416</Z>
+        <W>0.9189305</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>94</PrimaryColor>
@@ -580,22 +580,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>356.646729</X>
-        <Y>-950.9396</Y>
-        <Z>30.3362179</Z>
+        <X>356.653076</X>
+        <Y>-950.907043</Y>
+        <Z>29.036993</Z>
       </Position>
       <Rotation>
-        <X>-0</X>
-        <Y>-0</Y>
-        <Z>-45.6254921</Z>
+        <X>-1.5328958</X>
+        <Y>-1.71301877</Y>
+        <Z>-45.5813828</Z>
       </Rotation>
       <Hash>-1137532101</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>-0.387720674</Z>
-        <W>0.9217769</W>
+        <X>-0.0181208551</X>
+        <Y>-0.008598967</Y>
+        <Z>-0.3874723</Z>
+        <W>0.921663165</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>0</PrimaryColor>
@@ -604,22 +604,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>365.7549</X>
-        <Y>-951.495056</Y>
-        <Z>30.3135433</Z>
+        <X>365.75824</X>
+        <Y>-951.4732</Y>
+        <Z>29.0249481</Z>
       </Position>
       <Rotation>
-        <X>-0</X>
-        <Y>-0</Y>
-        <Z>-46.5129356</Z>
+        <X>-1.70258737</X>
+        <Y>-1.25663531</Y>
+        <Z>-46.4912</Z>
       </Rotation>
       <Hash>-1775728740</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>-0.394847631</Z>
-        <W>0.9187466</W>
+        <X>-0.0179779213</X>
+        <Y>-0.00421124</Y>
+        <Z>-0.394755751</Z>
+        <W>0.918600559</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>111</PrimaryColor>
@@ -628,22 +628,22 @@
     <MapObject>
       <Type>Vehicle</Type>
       <Position>
-        <X>392.9924</X>
-        <Y>-1095.94263</Y>
-        <Z>30.5759869</Z>
+        <X>393.044983</X>
+        <Y>-1095.94568</Y>
+        <Z>29.0825</Z>
       </Position>
       <Rotation>
-        <X>0</X>
-        <Y>-0</Y>
-        <Z>-177.983353</Z>
+        <X>-0.131232873</X>
+        <Y>-4.29056</Y>
+        <Z>-177.988785</Z>
       </Rotation>
       <Hash>-808457413</Hash>
       <Dynamic>true</Dynamic>
       <Quaternion>
-        <X>0</X>
-        <Y>0</Y>
-        <Z>0.999845147</Z>
-        <W>-0.017597558</W>
+        <X>0.0374477468</X>
+        <Y>-0.0004872838</Y>
+        <Z>0.9991453</Z>
+        <W>-0.0174948946</W>
       </Quaternion>
       <SirensActive>false</SirensActive>
       <PrimaryColor>95</PrimaryColor>
@@ -1320,6 +1320,246 @@
       <SirensActive>false</SirensActive>
       <PrimaryColor>4</PrimaryColor>
       <SecondaryColor>120</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2346.894</X>
+        <Y>3135.27539</Y>
+        <Z>47.7902069</Z>
+      </Position>
+      <Rotation>
+        <X>-0.0141422413</X>
+        <Y>0.00013357951</Y>
+        <Z>81.20007</Z>
+      </Rotation>
+      <Hash>-1207771834</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-9.446352E-05</X>
+        <Y>-7.94298539E-05</Y>
+        <Z>0.6507747</Z>
+        <W>0.759270847</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>40</PrimaryColor>
+      <SecondaryColor>0</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2359.619</X>
+        <Y>3132.33423</Y>
+        <Z>47.7901878</Z>
+      </Position>
+      <Rotation>
+        <X>-0.013665583</X>
+        <Y>-0.0001544884</Y>
+        <Z>-99.64181</Z>
+      </Rotation>
+      <Hash>-1207771834</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>7.79706752E-05</X>
+        <Y>-9.024455E-05</Y>
+        <Z>0.76403147</Z>
+        <W>-0.645179033</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>12</PrimaryColor>
+      <SecondaryColor>0</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2411.96436</X>
+        <Y>3104.77783</Y>
+        <Z>48.9639549</Z>
+      </Position>
+      <Rotation>
+        <X>0.7046487</X>
+        <Y>0.483793378</Y>
+        <Z>58.589653</Z>
+      </Rotation>
+      <Hash>-901163259</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>0.00329699321</X>
+        <Y>0.00669067865</Y>
+        <Z>0.4892675</Z>
+        <W>0.872101963</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>112</PrimaryColor>
+      <SecondaryColor>192</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2361.59839</X>
+        <Y>3116.09448</Y>
+        <Z>47.4989967</Z>
+      </Position>
+      <Rotation>
+        <X>-0.7391396</X>
+        <Y>0.144484043</Y>
+        <Z>88.31047</Z>
+      </Rotation>
+      <Hash>-440768424</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-0.005506003</X>
+        <Y>-0.00358861755</Y>
+        <Z>0.69659555</Z>
+        <W>0.7174339</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>49</PrimaryColor>
+      <SecondaryColor>0</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2361.4563</X>
+        <Y>3114.5603</Y>
+        <Z>47.51303</Z>
+      </Position>
+      <Rotation>
+        <X>-1.91611874</X>
+        <Y>0.971731067</Y>
+        <Z>91.84393</Z>
+      </Rotation>
+      <Hash>-440768424</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-0.0177220162</X>
+        <Y>-0.006113398</Y>
+        <Z>0.7183655</Z>
+        <W>0.6954132</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>37</PrimaryColor>
+      <SecondaryColor>118</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2361.27148</X>
+        <Y>3112.91943</Y>
+        <Z>47.750103</Z>
+      </Position>
+      <Rotation>
+        <X>-4.207573</X>
+        <Y>1.40449834</Y>
+        <Z>89.036</Z>
+      </Rotation>
+      <Hash>-1269889662</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-0.0347606577</X>
+        <Y>-0.01700333</Y>
+        <Z>0.7009289</Z>
+        <W>0.7121806</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>0</PrimaryColor>
+      <SecondaryColor>0</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2361.08032</X>
+        <Y>3111.31323</Y>
+        <Z>47.7864761</Z>
+      </Position>
+      <Rotation>
+        <X>-4.7098484</X>
+        <Y>0.936334</Y>
+        <Z>75.95389</Z>
+      </Rotation>
+      <Hash>-1269889662</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-0.03741187</X>
+        <Y>-0.0188480224</Y>
+        <Z>0.6150688</Z>
+        <W>0.7873598</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>0</PrimaryColor>
+      <SecondaryColor>0</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2353.021</X>
+        <Y>3108.56958</Y>
+        <Z>47.83714</Z>
+      </Position>
+      <Rotation>
+        <X>-0.248841092</X>
+        <Y>0.195386752</Y>
+        <Z>81.6725</Z>
+      </Rotation>
+      <Hash>1645267888</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>-0.00275789225</X>
+        <Y>-0.000129949345</Y>
+        <Z>0.6538998</Z>
+        <W>0.7565762</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>93</PrimaryColor>
+      <SecondaryColor>96</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Vehicle</Type>
+      <Position>
+        <X>2346.18726</X>
+        <Y>3110.206</Y>
+        <Z>47.8423576</Z>
+      </Position>
+      <Rotation>
+        <X>0.0167427119</X>
+        <Y>0.000395739073</Y>
+        <Z>78.2819748</Z>
+      </Rotation>
+      <Hash>1645267888</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>0.000111140478</X>
+        <Y>9.49062E-05</Y>
+        <Z>0.6312309</Z>
+        <W>0.775595</W>
+      </Quaternion>
+      <SirensActive>false</SirensActive>
+      <PrimaryColor>6</PrimaryColor>
+      <SecondaryColor>6</SecondaryColor>
+    </MapObject>
+    <MapObject>
+      <Type>Ped</Type>
+      <Position>
+        <X>2364.916</X>
+        <Y>3135.315</Y>
+        <Z>47.6361465</Z>
+      </Position>
+      <Rotation>
+        <X>-0.03204791</X>
+        <Y>4.16881585E-10</Y>
+        <Z>-95.99909</Z>
+      </Rotation>
+      <Hash>-1788665315</Hash>
+      <Dynamic>true</Dynamic>
+      <Quaternion>
+        <X>0.0001871379</X>
+        <Y>-0.000207834455</Y>
+        <Z>0.743139565</Z>
+        <W>-0.669136465</W>
+      </Quaternion>
+      <Action>None</Action>
+      <Relationship>Companion</Relationship>
+      <Weapon>Unarmed</Weapon>
     </MapObject>
     <MapObject>
       <Type>Pickup</Type>
