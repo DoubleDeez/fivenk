@@ -104,7 +104,26 @@ namespace fivenk_rp
 
             if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
             {
-                API.createPed(hash, API.getEntityPosition(sender), heading);
+                API.createPed(hash, API.getEntityPosition(sender), heading, API.getEntityDimension(sender));
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
+
+        [Command("pickup")]
+        [Acl(Acl.Admin)]
+        public void SpawnPickup(Client sender, PickupHash hash, int amount = 1)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                Vector3 PickupPos = API.getEntityPosition(sender);
+                PickupPos.X += 2.0f;
+                PickupPos.Y += 2.0f;
+                API.createPickup(hash, PickupPos, new Vector3(), amount, 1, API.getEntityDimension(sender));
                 return;
             }
 
