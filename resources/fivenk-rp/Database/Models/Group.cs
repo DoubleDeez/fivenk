@@ -41,9 +41,8 @@ namespace fivenk_rp
         // Make sure these map to the enum above
         public static readonly Vector3[] SpawnPositions =
         {
-            // TODO: Make these not all the police station
             new Vector3(447.1f, -984.21f, 30.69f),
-            new Vector3(447.1f, -984.21f, 30.69f),
+            new Vector3(2352.319f, 3114.937f, 48.20872),
             new Vector3(105.7801f, -1974.132f, 20.93941),
             new Vector3(-691.2151f, -731.7692f, 33.68372f)
         };
