@@ -45,7 +45,7 @@ namespace fivenk_rp
             new Vector3(447.1f, -984.21f, 30.69f),
             new Vector3(447.1f, -984.21f, 30.69f),
             new Vector3(447.1f, -984.21f, 30.69f),
-            new Vector3(447.1f, -984.21f, 30.69f)
+            new Vector3(-691.2151f, -731.7692f, 33.68372f)
         };
     }
 }
