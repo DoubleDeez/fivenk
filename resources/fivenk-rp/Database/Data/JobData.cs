@@ -60,7 +60,7 @@ namespace fivenk_rp
 
         public static Job GetJob(Id JobId)
         {
-            if(!JobIdMap.ContainsKey(JobId))
+            if (!JobIdMap.ContainsKey(JobId))
             {
                 return null;
             }

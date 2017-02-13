@@ -27,7 +27,7 @@ namespace fivenk_rp
         static public void SendPlayerToCharacterSelection(Client client)
         {
             Player player = ClientHelper.GetPlayerFromClient(client);
-            if(player == null)
+            if (player == null)
             {
                 return;
             }
@@ -56,7 +56,7 @@ namespace fivenk_rp
 
             Group.Type GroupType = (Group.Type)GroupIndex;
             PedHash SkinHashEnum = (PedHash)SkinHash;
-            if(!Character.TryToCreateCharacter(client, CharacterName, GroupType, SkinHashEnum))
+            if (!Character.TryToCreateCharacter(client, CharacterName, GroupType, SkinHashEnum))
             {
                 // TODO#48 - Log error
                 API.triggerClientEvent(client, EVENT_FAIL_CREATE_CHARACTER, "Please rejoin or try again later.");

@@ -70,7 +70,7 @@ namespace fivenk_rp
             foreach (var method in commandMethods)
             {
                 Acl methodAcl = CommandHelper.GetMethodAcl(method);
-                if(ClientHelper.DoesClientHavePermission(sender, methodAcl))
+                if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
                 {
                     CommandAttribute commandAttribute = method.GetCustomAttribute<CommandAttribute>(false);
                     if (commandAttribute.CommandString == null)

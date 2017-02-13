@@ -122,7 +122,7 @@ namespace fivenk_rp
             {
                 Login(sender, arguments[0].ToString());
             }
-            else if(eventName.Equals(EVENT_PLAYER_SIGNUP) && arguments.Length == 1)
+            else if (eventName.Equals(EVENT_PLAYER_SIGNUP) && arguments.Length == 1)
             {
                 Register(sender, arguments[0].ToString());
             }
