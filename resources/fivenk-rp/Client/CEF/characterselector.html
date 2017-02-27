@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/common.css">
+        <link rel="stylesheet" type="text/css" href="CSS/characterselector.css">
+        <title>Character Selector</title>
+        <script src="JS/jquery.min.js"></script>
+        <script src="JS/groupdata.js"></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-xs-offset-6 col-xs-6">
+                <h1 class="menu-title">CHARACTER SELECT</h1>
+                <div class="characters">
+                    <div id="create-char" class="row char-option char-option-selected"><div class="col-xs-12">Create New Character</div></div>
+                    <div id="character-container">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row char-info-margin">
+            <div class="col-xs-6 text-center">
+                <span id="char-name" class="char-style"></span>
+                <span id="char-sep" class="char-style">&nbsp;-&nbsp;</span>
+                <span id="char-cash" class="char-style"></span>
+                <h2 id="char-job" class="char-job"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <button id="play" class="btn play-btn">PLAY</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        var selectedCharId = -1;
+        var allowClicks = true;
+
+        function SetCharacters(charstring) {
+            var chars = JSON.parse(charstring);
+            $("#character-container").html("");
+            chars.forEach(function(value) {
+                console.log(value);
+                var CharDiv = "<div id=\"select-char\" data-char-id=\"" + value.Id + "\" data-char-skin=\"";
+                CharDiv += value.SkinHash + "\" data-char-cash=\"" + value.Cash + "\" class=\"row char-option\">";
+                CharDiv += "<div class=\"col-xs-6 name\">" + value.Name + "</div>";
+                CharDiv += "<div class=\"col-xs-6 text-center job\">" + value.Job + "</div></div>";
+                $("#character-container").append(CharDiv);
+                console.log(value.Id);
+            });
+            SetupCharacterCallbacks();
+        }
+
+        function EnabledButtons(IsEnabled) {
+            $("#play").prop("disabled", !IsEnabled);
+            allowClicks = IsEnabled;
+        }
+
+        function SetupCharacterCallbacks() {
+            $("#character-container").find(".char-option").click(function(event) {
+                $(".char-option").removeClass("char-option-selected");
+                $(this).addClass("char-option-selected");
+                $("#char-name").text($(this).find(".name").text());
+                $("#char-job").text($(this).find(".job").text());
+                $("#char-cash").text("$" + $(this).data("charCash"));
+                selectedCharId = parseInt($(this).data("charId"));
+                console.log(selectedCharId);
+                resourceCall("SetPlayerSkin", parseInt($(this).data("charSkin")));
+                // Enable the play button when selecting a character if it's allowed
+                $("#play").prop("disabled", !allowClicks);
+            });
+        }
+
+        $(document).ready(function() {
+            resourceCall("ShowCharacterSelector");
+            $("#play").prop("disabled", true);
+
+            $("#play").click(function(event) {
+                EnabledButtons(false);
+                resourceCall("OnSelectCharacter", selectedCharId);
+            });
+
+            $("#create-char").click(function(event) {
+                if (!allowClicks) return;
+                resourceCall("OnSelectCreateCharactor");
+            });
+        });
+    </script>
+</html>

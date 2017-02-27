@@ -15,6 +15,25 @@ namespace fivenk_rp
             return API.shared.getEntityData(client, "Player");
         }
 
+        public static Character GetCharacterFromClient(Client client)
+        {
+            if (client == null) return null;
+            return API.shared.getEntityData(client, "Character");
+        }
+
+        public static Client GetClientWithPlayerName(string PlayerName)
+        {
+            List<Client> clients = API.shared.getAllPlayers();
+            foreach (Client client in clients)
+            {
+                if (API.shared.getPlayerName(client).Equals(PlayerName))
+                {
+                    return client;
+                }
+            }
+            return null;
+        }
+
         public static bool IsPlayerLoggedIn(Client client)
         {
             Player player = GetPlayerFromClient(client);
@@ -23,7 +42,7 @@ namespace fivenk_rp
 
         public static bool DoesClientHavePermission(Client client, Acl AclLevel)
         {
-            Player player = ClientHelper.GetPlayerFromClient(client);
+            Player player = GetPlayerFromClient(client);
             Acl playerAcl = player == null ? Acl.NotLoggedIn : player.AclLevel;
             return (playerAcl >= AclLevel);
         }
@@ -36,6 +55,16 @@ namespace fivenk_rp
                 return;
             }
             player.Save();
+        }
+
+        public static void SaveCharacter(Client client)
+        {
+            Character character = GetCharacterFromClient(client);
+            if (character == null)
+            {
+                return;
+            }
+            character.Save();
         }
     }
 }

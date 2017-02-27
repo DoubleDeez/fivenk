@@ -169,5 +169,31 @@ namespace fivenk_rp
 
             CommandHelper.ClientDoesNotHavePermission(sender);
         }
+
+        [Command(GreedyArg = true)]
+        [Acl(Acl.Admin)]
+        public void GiveCash(Client sender, int CashAmount, string targetPlayerName)
+        {
+            MethodBase method = MethodBase.GetCurrentMethod();
+            Acl methodAcl = CommandHelper.GetMethodAcl(method);
+
+            if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
+            {
+                Client target = ClientHelper.GetClientWithPlayerName(targetPlayerName);
+                Character character = ClientHelper.GetCharacterFromClient(target);
+                if (character == null)
+                {
+                    API.sendChatMessageToPlayer(sender, "~r~ERROR: ~w~ Could not find player with name ~g~"
+                        + targetPlayerName);
+                }
+                else
+                {
+                    character.GiveCash(CashAmount);
+                }
+                return;
+            }
+
+            CommandHelper.ClientDoesNotHavePermission(sender);
+        }
     }
 }

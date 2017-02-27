@@ -16,18 +16,6 @@ namespace fivenk_rp
             listAllCommands(sender);
         }
 
-        [Command(SensitiveInfo = true)]
-        public void Login(Client sender, string password)
-        {
-            API.call("LoginManager", "Login", sender, password);
-        }
-
-        [Command(SensitiveInfo = true)]
-        public void Register(Client sender, string password)
-        {
-            API.call("LoginManager", "Register", sender, password);
-        }
-
         [Command("whisper", Alias = "w", GreedyArg = true)]
         [Acl(Acl.Default)]
         public void WhisperPlayer(Client sender, Client target, string message)
@@ -82,7 +70,7 @@ namespace fivenk_rp
             foreach (var method in commandMethods)
             {
                 Acl methodAcl = CommandHelper.GetMethodAcl(method);
-                if(ClientHelper.DoesClientHavePermission(sender, methodAcl))
+                if (ClientHelper.DoesClientHavePermission(sender, methodAcl))
                 {
                     CommandAttribute commandAttribute = method.GetCustomAttribute<CommandAttribute>(false);
                     if (commandAttribute.CommandString == null)

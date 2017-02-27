@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/common.css">
+        <link rel="stylesheet" type="text/css" href="CSS/login.css">
+        <title>Login/Register</title>
+        <script src="JS/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="form">
+            <img src="Images/logo.png" class="logo" /><br>
+            <span class="form-title"></span><br>
+            <span class="username"></span><br>
+            <input id="password" class="password" type="password" name="password" placeholder="password"><br>
+            <input id="passwordConfirm" class="password" type="password" name="passwordConfirm" placeholder="password (again)"><br>
+            <button id="login" class="btn submit pull-right">Login</button>
+            <button id="signup" class="btn submit pull-right">Sign Up</button>
+        </div>
+    </body>
+    <script>
+        function SetUsername(name) {
+            $(".username").text(name);
+            $("#password").focus();
+        }
+
+        function SetLoginData() {
+            $(".form-title").text("LOGIN");
+            $("#password").val("");
+            $("#passwordConfirm").val("");
+            $("#passwordConfirm").hide();
+            $("#login").show();
+            $("#signup").hide();
+            EnableSubmitButton(true);
+        }
+
+        function SetSignupData() {
+            $(".form-title").text("SIGN UP");
+            $("#password").val("");
+            $("#passwordConfirm").val("");
+            $("#passwordConfirm").show();
+            $("#login").hide();
+            $("#signup").show();
+            EnableSubmitButton(true);
+        }
+
+        function EnableSubmitButton(IsEnabled) {
+            $("#login").prop("disabled", !IsEnabled);
+            $("#signup").prop("disabled", !IsEnabled);
+        }
+
+        $(document).ready(function() {
+            $("#login").click(function(event) {
+                resourceCall("LoginPlayer", String($("#password").val()));
+                if (password.length == 0) {
+                    return;
+                }
+                EnableSubmitButton(false);
+            });
+            $("#signup").click(function(event) {
+                var password = String($("#password").val());
+                var passwordConfirm = String($("#passwordConfirm").val());
+                if (password.length == 0 || passwordConfirm.length == 0) {
+                    return;
+                }
+                resourceCall("SignupPlayer", password, passwordConfirm);
+                EnableSubmitButton(false);
+            });
+            // Try to log in on enter press
+            $('#password').keypress(function (e) {
+                if (e.which == 13) {
+                    $('#login').click();
+                    return false;
+                }
+            });
+        });
+    </script>
+</html>

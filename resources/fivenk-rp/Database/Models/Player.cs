@@ -5,13 +5,10 @@ using System.Security.Cryptography;
 
 namespace fivenk_rp
 {
-    public class Player : Model
+    public class Player : DatabaseModel
     {
-        #region Class Constants
         private const Acl DEFAULT_ACL = Acl.Default;
-        #endregion
         
-        #region Account Data
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [Unique]
@@ -22,9 +19,7 @@ namespace fivenk_rp
         public DateTime TimeRegistered { get; set; }
         public DateTime TimeLastLoggedIn { get; set; }
         public Acl AclLevel { get; set; }
-        #endregion
 
-        #region Instance Methods
         public bool IsLoggedIn()
         {
             return AclLevel != Acl.NotLoggedIn;
@@ -34,9 +29,7 @@ namespace fivenk_rp
         {
             GetDB().Update(this);
         }
-        #endregion
 
-        #region Static Methods
         public static bool DoesPlayerExist(string PlayerName)
         {
             return GetDB().Table<Player>().Where(player => (player.SocialClubName == PlayerName)).Count() > 0;
@@ -96,6 +89,5 @@ namespace fivenk_rp
             API.shared.setEntityData(client, "Player", PlayerFromDB);
             return true;
         }
-        #endregion
     }
 }

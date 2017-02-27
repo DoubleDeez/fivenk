@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <servername>[EN] Five~r~N~b~K~w~.com | Light Roleplay | [Test]</servername>
+  <servername>[EN] ~r~Five~b~NK~w~.com | Light Roleplay | [Test]</servername>
   <serverport>4499</serverport>
   <maxplayers>50</maxplayers>
   <minclientversion>0.1.386.270</minclientversion>

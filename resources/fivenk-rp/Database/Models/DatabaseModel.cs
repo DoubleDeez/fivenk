@@ -7,7 +7,7 @@ using SQLite;
 
 namespace fivenk_rp
 {
-    public abstract class Model
+    public abstract class DatabaseModel
     {
         /// <summary>
         /// Wrapper for Database.Instance()

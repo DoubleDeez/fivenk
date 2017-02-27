@@ -4,23 +4,43 @@
     <config src="vehicles.xml" type="server" />
 
     <!-- Enable debugging -->
-    <!-- <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" /> -->
-    <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" />
+    <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
+	<!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
 
 
     <!-- Client JS Files -->
+    <script src="Client/CharacterCreator.js" type="client" lang="javascript" />
+    <script src="Client/Login.js" type="client" lang="javascript" />
     <script src="Client/MoneyDisplay.js" type="client" lang="javascript" />
-    <script src="Client/SkinSelector.js" type="client" lang="javascript" />
     <script src="Client/Speedometer.js" type="client" lang="javascript" />
 
 
     <!-- CEF Font Files -->
     <file src="Client/CEF/Fonts/Cornerstone.ttf" />
+    <file src="Client/CEF/Fonts/glyphicons-halflings-regular.ttf" />
+    <file src="Client/CEF/Fonts/OpenSans-Regular.ttf" />
+    <file src="Client/CEF/Fonts/OpenSans-Bold.ttf" />
 
     <!-- CEF CSS Files -->
+    <file src="Client/CEF/CSS/bootstrap.min.css" />
+    <file src="Client/CEF/CSS/charactercreator.css" />
+    <file src="Client/CEF/CSS/characterselector.css" />
+    <file src="Client/CEF/CSS/common.css" />
+    <file src="Client/CEF/CSS/login.css" />
     <file src="Client/CEF/CSS/speedometer.css" />
 
+    <!-- CEF JS Files -->
+    <file src="Client/CEF/JS/jquery.min.js" />
+    <file src="Client/CEF/JS/groupdata.js" />
+
+    <!-- CEF Image Files -->
+    <file src="Client/CEF/Images/logo.png" />
+    <file src="Client/CEF/Images/logo-square.png" />
+
     <!-- CEF HTML Files -->
+    <file src="Client/CEF/charactercreator.html" />
+    <file src="Client/CEF/characterselector.html" />
+    <file src="Client/CEF/login.html" />
     <file src="Client/CEF/speedometer.html" />
 
 
