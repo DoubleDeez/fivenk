@@ -1,11 +1,11 @@
 ﻿<meta>
     <info name="FiveNK Roleplay" description="A light roleplay server that is under development." author="DoubleDeez" version="1.0" shadowcopy="false" />
     <!-- Config Files -->
-    <config src="vehicles.xml" type="server" />
+    <!-- There are none! -->
 
     <!-- Enable debugging -->
     <script src="../bin/Debug/fivenk_rp.dll" type="server" lang="compiled" />
-	<!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
+    <!-- <script src="../bin/Release/fivenk_rp.dll" type="server" lang="compiled" /> -->
 
 
     <!-- Client JS Files -->
